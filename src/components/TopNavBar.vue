@@ -16,14 +16,16 @@
 
 <style scoped>
   .topnav{
-    position: relative;
-    position: fixed;
+    position: sticky;
     width:fit-content;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: black;
     top: 0;
+    z-index: 200;
   }
   .logo{
-    margin: 18px 20px -12px 10px;
-    
+    margin: 18px 20px -12px 10px;    
     display: inline-block;
   }
 
