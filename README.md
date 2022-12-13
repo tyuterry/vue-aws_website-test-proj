@@ -4,7 +4,7 @@
 
 # Package
 
-  npm install @jporto/vue-flex-layout   flex layout quick start
+  vite-plugin-vue-component-preview
 
 
 ## Customize configuration
