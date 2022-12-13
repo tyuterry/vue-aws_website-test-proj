@@ -4,8 +4,10 @@
 
 # Package
 
-  vite-plugin-vue-component-preview
-
+  vite-plugin-vue-component-preview    //Develpoer tool for preview
+  @fortawesome/fontawesome-svg-core    // icon package core 
+  @fortawesome/free-solid-svg-icons    // icon
+  @fortawesome/vue-fontawesome@latest-3// icon vue component
 
 ## Customize configuration
 
