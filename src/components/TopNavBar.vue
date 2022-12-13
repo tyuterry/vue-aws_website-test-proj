@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  import AccountOption from './AccountOption.vue'
 
 </script>
 
@@ -10,7 +11,9 @@
           <span class="logoImg">按一下這裡可返回 Amazon Web Services 首頁</span>
         </a>
       </div>
-      <div class="account">Account option</div>
+      <div class="account">
+        <AccountOption />
+      </div>
     </div>
     <div>ALL the Nav option</div>
   </div>
