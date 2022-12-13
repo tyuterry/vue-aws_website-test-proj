@@ -15,7 +15,7 @@
         <AccountOption />
       </div>
     </div>
-    <div>ALL the Nav option</div>
+    <div style="padding-top: 20px;">ALL the Nav option</div>
   </div>
 </template>
 

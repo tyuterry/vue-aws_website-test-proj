@@ -149,8 +149,10 @@ import AccountOptionDropdown from './AccountOptionDropdown.vue'
     color: white;
     font-weight: 800;
     background-color: rgb(236, 114, 17);
+    margin-left: 20px;
     padding: 5px 20px;    
     border-radius: 40px;
+    cursor :pointer;    
   }
   .consoleBtn:hover{
     background-color: rgb(235, 95, 7)

@@ -41,7 +41,7 @@
     <div v-show="selfhover" class="dropdown" @mouseover="mouseover()" @mouseout="mouseout()">
       <div class="up"></div>
       <div v-for="child of prop.child" class="dropdownitem">
-        {{child.name}}
+        <a :href="child.href" >{{child.name}}</a>
       </div>
     </div>
   </div>  
@@ -61,11 +61,12 @@
   padding:15px;
   transform: translate(-50%,5px);
 }
-.dropdownitem{
+.dropdownitem, .dropdownitem>a{
   padding: 5px;
   white-space: nowrap;
   color: black;
   font-size: small;
+  text-decoration: none;
 }
 .up{
   width: 0;
