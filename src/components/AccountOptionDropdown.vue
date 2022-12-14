@@ -4,15 +4,15 @@
 
   const instance = getCurrentInstance();
 
-  const prop = defineProps(['hover','child'])
-  let selfnowhover:boolean = false
+  const prop = defineProps(['hover','child','zindex'])
+  let selfnowhover:boolean = false;
   let selfhover:Ref<boolean> = ref(false);
 
   watch(prop, async (newQuestion, oldQuestion) => {
     if(prop.hover){
       selfhover = ref(true);
     } else if( !selfnowhover){
-      selfhover = ref(false);      
+      selfhover = ref(false); 
       instance?.proxy?.$forceUpdate();
     }
   })
@@ -38,7 +38,7 @@
 <template>
   <div class="inline" >
     <FAicon icon="fa-solid fa-caret-down" />
-    <div v-show="selfhover" class="dropdown" @mouseover="mouseover()" @mouseout="mouseout()">
+    <div v-show="selfhover" :style="{zIndex:prop.zindex}" class="dropdown" @mouseover="mouseover()" @mouseout="mouseout()">
       <div class="up"></div>
       <div v-for="child of prop.child" class="dropdownitem">
         <a :href="child.href" >{{child.name}}</a>
@@ -56,7 +56,6 @@
   position: absolute;
   left: 0;
   background-color: white;
-  z-index: 5;
   border-radius: 5px;
   padding:15px;
   transform: translate(-50%,5px);
@@ -78,7 +77,7 @@
   transform: translate(11px,-20px);
   right: 50%;
 }
-.dropdownitem:hover {
+.dropdownitem:hover , .dropdownitem>a:hover {
   color: #f8991d;
 }
 </style>
