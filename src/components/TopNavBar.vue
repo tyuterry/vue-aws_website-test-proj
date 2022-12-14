@@ -21,6 +21,8 @@
 
 <style scoped>
   .topnav{
+    display: flex;
+    flex-direction: column;
     position: fixed;
     width:fit-content;
     box-sizing: border-box;
