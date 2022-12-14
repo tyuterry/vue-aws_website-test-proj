@@ -4,11 +4,11 @@
 </script>
 
 <template>
-  <div class="topnav">
+  <div class="topnav flex-column fixed full-width">
     <div>
-      <div class="logo">
+      <div class="logo inline-block">
         <a href="/home"  >
-          <span class="logoImg">按一下這裡可返回 Amazon Web Services 首頁</span>
+          <span class="logoImg block">按一下這裡可返回 Amazon Web Services 首頁</span>
         </a>
       </div>
       <div class="account">
@@ -19,26 +19,19 @@
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
   .topnav{
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    width:fit-content;
     box-sizing: border-box;
-    width: 100%;
-    background-color: rgb(35, 47, 62);
+    background-color: var(--aws-background-dark);
     top: 0;
     z-index: 200;
     padding: 0 2rem;
   }
   .logo{
     margin: 18px 20px -12px 10px;    
-    display: inline-block;
   }
 
   .logoImg{
-    display: block;
     width: 59px;
     height:35px;
     background: transparent url('../assets/image/aws_smile_logo.png') no-repeat scroll 0 0;
