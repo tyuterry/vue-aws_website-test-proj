@@ -6,13 +6,13 @@ const instance = getCurrentInstance();
 
 const prop = defineProps(['hover', 'child', 'zindex'])
 let selfnowhover: boolean = false;
-let selfhover: Ref<boolean> = ref(false);
+let selfshow: Ref<boolean> = ref(false);
 
-watch(prop, async (newQuestion, oldQuestion) => {
+watch(prop, async ( newprop , oldprop ) => {
   if (prop.hover) {
-    selfhover = ref(true);
+    selfshow = ref(true);
   } else if (!selfnowhover) {
-    selfhover = ref(false);
+    selfshow = ref(false);
     instance?.proxy?.$forceUpdate();
   }
 })
@@ -20,14 +20,14 @@ watch(prop, async (newQuestion, oldQuestion) => {
 
 function mouseover() {
   selfnowhover = true;
-  selfhover = ref(true);
+  selfshow = ref(true);
 }
 
 function mouseout() {
   selfnowhover = false;
   setTimeout(() => {
     if (!selfnowhover && !prop.hover) {
-      selfhover = ref(false);
+      selfshow = ref(false);
       instance?.proxy?.$forceUpdate();
     }
   }, 500);
@@ -38,7 +38,7 @@ function mouseout() {
 <template>
   <div class="inline">
     <FAicon icon="fa-solid fa-caret-down" />
-    <div v-show="selfhover" :style="{zIndex:prop.zindex}" class="dropdown absolute" @mouseover="mouseover()"
+    <div v-show="selfshow" :style="{zIndex:prop.zindex}" class="dropdown absolute" @mouseover="mouseover()"
       @mouseout="mouseout()">
       <div class="up absolute"></div>
       <div v-for="child of prop.child" class="dropdownitem">
