@@ -11,7 +11,8 @@
   @fortawesome/free-solid-svg-icons    // icon
 
   @fortawesome/vue-fontawesome@latest-3// icon vue component
-  
+
+  sass  //scss packge
 
 ## Customize configuration
 

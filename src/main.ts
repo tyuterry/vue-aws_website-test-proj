@@ -11,7 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
 
-import './assets/main.css'
+import './assets/main.scss'
 
 library.add(faCaretDown)
 

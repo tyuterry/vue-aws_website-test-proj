@@ -140,9 +140,9 @@ function getaccountOptZIndex() {
 
 
 <template>
-  <template v-for="option in accountOpts" :key="option.id" class="optionList">
-    <a :href="option.link" class="option" v-if="option.child.length == 0">{{ option.name }}</a>
-    <span class="option" v-if="option.child.length != 0" @mouseenter="onmouseover(option)"
+  <template v-for="option in accountOpts" :key="option.id" class="flex-row">
+    <a :href="option.link" class="option pointer txt-no_" v-if="option.child.length == 0">{{ option.name }}</a>
+    <span class="option pointer txt-no_" v-if="option.child.length != 0" @mouseenter="onmouseover(option)"
       @mouseleave="onmouseout(option)">
       {{ option.name }}
       <AccountOptionDropdown :hover="option.hover" :child="option.child" :zindex="option.zindex" />
@@ -152,35 +152,30 @@ function getaccountOptZIndex() {
 </template>
 
 
-<style>
+<style scoped lang="scss">
 .consoleBtn {
-  color: white;
+  color: var(--aws-text-white);
   font-weight: 800;
-  background-color: rgb(236, 114, 17);
+  background-color: var(--aws-theme-color);
   margin-left: 20px;
   padding: 5px 20px;
   border-radius: 40px;
   cursor: pointer;
+
+  &:hover{
+    background-color: var(--aws-theme-color-active);
+  }
+  
 }
 
-.consoleBtn:hover {
-  background-color: rgb(235, 95, 7)
-}
-
-.optionList {
-  display: flex;
-  flex-direction: row;
-}
-
-.option,
-a.option {
-  color: rgb(221, 221, 221);
-  text-decoration: none;
+.option, a.option {
+  color: var(--aws-text);
   padding: 10px;
-  cursor: pointer;
+
+  &:hover {
+    color: var(--aws-text-active);
+  }
 }
 
-.option:hover {
-  color: #f8991d;
-}
+
 </style>

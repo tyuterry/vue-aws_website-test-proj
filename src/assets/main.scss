@@ -1,0 +1,81 @@
+@import './base.scss';
+
+#app {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  font-weight: normal;
+}
+
+
+@media (min-width: 1024px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+  }
+
+  #app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 2rem;
+  }
+}
+
+
+// 暫時保留上方
+
+.relative{
+  position: relative;
+}
+.sticky{
+  position: sticky;
+}
+.absolute{
+  position: absolute;
+}
+.fixed{
+  position: fixed;
+}
+
+.block{
+  display: block;
+}
+.inline{
+  display: inline;
+}
+.inline-block{
+  display: inline-block;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+.txt-no_{
+  text-decoration: none;
+}
+
+.full-width{
+  width: 100%;
+}
+
+%flex-container{
+  display: flex;
+}
+
+.flex-row{
+  @extend %flex-container;
+  flex-direction: row;
+}  
+.flex-column{
+  @extend %flex-container;
+  flex-direction: column;
+}
+
+.flex-auto{
+  flex: auto
+}
