@@ -47,7 +47,7 @@ import { getCurrentInstance, ref, watch, type Ref } from 'vue';
 <template>
   <div v-show="selfshow" class="itemblock inline-block shadow bodertop" @mouseover="mouseover()"
       @mouseout="mouseout()">
-    
+    <slot>Seems Nothing Here :(</slot>
   </div>
 </template>
 
@@ -59,6 +59,7 @@ import { getCurrentInstance, ref, watch, type Ref } from 'vue';
     height: calc( 95vh - 108px);
     background-color: var(--aws-background-dark);
     align-self: center;
+    overflow: auto;
 
     &.shadow{
       box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.5);

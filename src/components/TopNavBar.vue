@@ -3,6 +3,9 @@ import { getCurrentInstance, ref, type Ref } from 'vue';
 import AccountOption from './AccountOption.vue'
 import NavItem from './NavItem.vue'
 
+//test
+import ReInventViewVue from '@/views/ReInventView.vue';
+
 let navTitle: string[] = [
   "re:Invent",
   "產品",
@@ -67,7 +70,9 @@ function shadowShow(value:boolean){
         </template>
       </div>
     </div>
-    <NavItem :hover="navTitleShow" @show-change="shadowShow"/>
+    <NavItem :hover="navTitleShow" @show-change="shadowShow">
+      <ReInventViewVue />
+    </NavItem>
   </div>
   <div v-if="shaodwShow" class="fullShadow absolute" ></div>
 </template>
