@@ -6,42 +6,43 @@ const instance = getCurrentInstance();
 
 const prop = defineProps(['hover', 'child', 'zindex'])
 let selfnowhover: boolean = false;
-let selfshow: Ref<boolean> = ref(false);
+let selfshow: Ref<boolean > = ref(false);
 
 watch(prop, async ( newprop , oldprop ) => {
   if (prop.hover) {
-    selfshow = ref(true);
+    selfshow.value = true;
   } else if (!selfnowhover) {
-    selfshow = ref(false);
-    instance?.proxy?.$forceUpdate();
+    selfshow.value = false;
   }
 })
 
 
-function mouseover() {
+function mouseenter() {
   selfnowhover = true;
-  selfshow = ref(true);
+  selfshow.value = true;
 }
 
-function mouseout() {
+function mouseleave() {
   selfnowhover = false;
   setTimeout(() => {
     if (!selfnowhover && !prop.hover) {
-      selfshow = ref(false);
-      instance?.proxy?.$forceUpdate();
+      selfshow.value = false;
     }
-  }, 500);
-
+  }, 1000);
 }
+function closeDropdown(){
+    selfnowhover = false;
+    selfshow.value = false;
+  }
 </script>
 
 <template>
   <div class="inline">
     <FAicon icon="fa-solid fa-caret-down" />
-    <div v-show="selfshow" :style="{zIndex:prop.zindex}" class="dropdown absolute" @mouseover="mouseover()"
-      @mouseout="mouseout()">
-      <div class="up absolute"></div>
-      <div v-for="child of prop.child" class="dropdownitem">
+    <div v-show="selfshow" :style="{zIndex:prop.zindex}" class="dropdown absolute" @mouseenter="mouseenter" @mouseleave="mouseleave">
+      <div class="up absolute "></div>
+      <FAicon icon="fa-solid fa-xmark" class="xmark noHover pointer" @click="closeDropdown()"/>
+      <div v-for="child of prop.child" class="dropdownitem pointer">
         <a :href="child.href">{{ child.name }}</a>
       </div>
     </div>
@@ -78,5 +79,12 @@ function mouseout() {
   border-color: transparent transparent #fff transparent;
   transform: translate(11px, -20px);
   right: 50%;
+}
+
+.xmark{
+  color: var(--aws-text-dark);
+  position: absolute;
+  top: 5px;
+  right: 10px;
 }
 </style>

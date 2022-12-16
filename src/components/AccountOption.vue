@@ -17,15 +17,15 @@ class AccountOptData {
 
 class AccountOption extends AccountOptData {
   id: string = "";
-  hover: Ref<boolean> | boolean = ref(false);
+  hover: Ref<boolean> = ref(false);
   zindex: Ref<number> = ref(0);
   child: AccountOption[] = [];
 
   constructor(accountData: AccountOptData, id: string) {
     super(accountData.name, accountData.link, accountData.child);
     this.id = id;
-    this.hover = ref(false);
-    this.zindex = ref(0);
+    this.hover = false;
+    this.zindex = 0;
     this.child = accountData.child.map((e, index) => {
       return new AccountOption(e, id + index);
     });
@@ -115,15 +115,15 @@ accountOpts.push(...accountOptData.map((e, index) => {
   return new AccountOption(e, index + "");
 }));
 
-function onmouseover(opt: AccountOption) {
-  opt.hover = ref(true);
-  opt.zindex = ref(getaccountOptZIndex());
+function onmouseenter(opt: AccountOption) {
+  opt.hover = true;
+  opt.zindex = getaccountOptZIndex();
 }
 
-function onmouseout(opt: AccountOption) {
-  opt.zindex = ref(getaccountOptZIndex());
+function onmouseleave(opt: AccountOption) {
+  opt.zindex = getaccountOptZIndex();
   setTimeout(() => {
-    opt.hover = ref(false);
+    opt.hover = false;
   }, 300);
 }
 
@@ -142,9 +142,9 @@ function getaccountOptZIndex() {
 <template>
   <template v-for="option in accountOpts" :key="option.id" class="flex-row">
     <a :href="option.link" class="option pointer txt-no_" v-if="option.child.length == 0">{{ option.name }}</a>
-    <span class="option pointer txt-no_" v-if="option.child.length != 0" @mouseenter="onmouseover(option)"
-      @mouseleave="onmouseout(option)">
-      {{ option.name }}
+    <span class="option txt-no_" v-if="option.child.length != 0" @mouseenter="onmouseenter(option)"
+      @mouseleave="onmouseleave(option)">
+      <span class="pointer">{{ option.name }}</span>
       <AccountOptionDropdown :hover="option.hover" :child="option.child" :zindex="option.zindex" />
     </span>
   </template>
@@ -174,7 +174,7 @@ function getaccountOptZIndex() {
 
   &:hover {
     color: var(--aws-text-active);
-  }
+  }   
 }
 
 
