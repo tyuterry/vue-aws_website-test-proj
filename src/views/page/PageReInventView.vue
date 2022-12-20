@@ -17,7 +17,7 @@ let cdata: CauoueslData[] = [
     text: "了解新的創新項目，協助您建置、管理和保護網路",
     urlTitle: "瀏覽公告 »",
     url: "",
-    imgUrl: "/src/assets/image/ReInvent/reinvent_carousel1.jpg",
+    imgUrl: "/image/ReInvent/reinvent_carousel1.jpg",
   },
   {
     id: "ad2",
@@ -25,7 +25,7 @@ let cdata: CauoueslData[] = [
     text: "可更快速地在AWS上建置及提交的統一軟體開發服務",
     urlTitle: "瀏覽公告 »",
     url: "",
-    imgUrl: "/src/assets/image/ReInvent/reinvent_carousel2.jpg",
+    imgUrl: "/image/ReInvent/reinvent_carousel2.jpg",
   },
   {
     id: "ad3",
@@ -33,7 +33,7 @@ let cdata: CauoueslData[] = [
     text: "以視覽化方式快速設計和組建無伺服器應用程式。",
     urlTitle: "瀏覽公告 »",
     url: "",
-    imgUrl: "/src/assets/image/ReInvent/reinvent_carousel3.jpg",
+    imgUrl: "/image/ReInvent/reinvent_carousel3.jpg",
   },
 ];
 </script>
