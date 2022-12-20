@@ -2,10 +2,9 @@
 import { getCurrentInstance, ref, type Ref } from "vue";
 import AccountOption from "./AccountOption.vue";
 import NavItem from "./NavItem.vue";
-import AboutViewVue from "@/views/AboutView.vue";
 
-//test
-import ReInventViewVue from "@/views/ReInventView.vue";
+import NavReInventViewVue from "@/views/nav/NavReInventView.vue";
+import NavProductViewVue from "@/views/nav/NavProductView.vue";
 
 let navTitle: string[] = [
   "re:Invent",
@@ -27,11 +26,11 @@ let navTitleNowHover: boolean = false;
 let navTitleShow: Ref<boolean> = ref(false);
 let shadowShow: Ref<boolean> = ref(false);
 
-let navItemTarget = ref("AboutViewVue");
+let navItemTarget = ref("ReInventViewVue");
 
 const navItems = {
-  ReInventViewVue,
-  AboutViewVue
+  NavReInventViewVue,
+  NavProductViewVue
 }
 
 function onmouseenter(title: string,index: number) {
@@ -90,8 +89,10 @@ function Showshadow(value: boolean) {
     </div>
     <div class="navContainer" :class="{scrollPadding:shadowShow}">
     <NavItem :hover="navTitleShow" @show-change="Showshadow">
-      <component :is="navItems[navItemTarget]"></component>
-      <!-- <ReInventViewVue /> -->
+      <Transition mode="out-in">
+        <!-- <ProductViewVue></ProductViewVue> -->
+        <component :is="navItems[navItemTarget]"></component>
+      </Transition>
     </NavItem>
     </div>
   </div>
@@ -131,7 +132,7 @@ function Showshadow(value: boolean) {
 .logoImg {
   width: 59px;
   height: 35px;
-  background: transparent url("../assets/image/aws_smile_logo.png") no-repeat
+  background: transparent url("../assets/image/Nav/aws_smile_logo.png") no-repeat
     scroll 0 0;
   text-indent: -99999px;
 }
@@ -158,4 +159,6 @@ function Showshadow(value: boolean) {
   z-index: 50;
   background-color: rgba(255, 255, 255, 0.7);
 }
+
+
 </style>

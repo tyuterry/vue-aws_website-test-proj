@@ -196,7 +196,7 @@ let data: dataClass = {
         <div class="flex-30">
           <div class="reInventImg"></div>
           <div class="reInventTitle">{{ data.title }}</div>
-          <LinkTitleVue
+          <LinkTitleVue class="title-padding"
             v-for="item of data.sublink"
             :text="item.text"
             :link="item.link"
@@ -221,11 +221,8 @@ let data: dataClass = {
 .reInventMargin {
   margin: 40px 0 40px 0;
 }
-.flex-40 {
-  flex: 40;
-}
-.flex-60 {
-  flex: 60;
+.title-padding{
+  padding: 5px;
 }
 
 .reInventTitle {
@@ -236,7 +233,7 @@ let data: dataClass = {
 .reInventImg {
   height: 45px;
   width: 300px;
-  background: transparent url("../assets/image/reinvent_nav_logo.svg") no-repeat
+  background: transparent url("../../assets/image/Nav/reinvent_nav_logo.svg") no-repeat
     scroll 0 0;
 }
 .reInventBulletin {

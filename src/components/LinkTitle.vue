@@ -3,16 +3,13 @@
 </script>
 
 <template>
-  <div class="titlelink-padding">
+  <div>
     <a :href="prop.link" class="titlelink">{{prop.text}}</a>
   </div>
 </template>
 
 
 <style scoped lang="scss">
-  .titlelink-padding{
-    padding: 5px;
-  }
   .titlelink{
     color: var(--aws-text);
     text-decoration: none;

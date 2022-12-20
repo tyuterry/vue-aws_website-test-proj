@@ -5,7 +5,7 @@ import TopNavBar from './components/TopNavBar.vue'
 
 <template>
   <TopNavBar />
-  <RouterView style="margin-top:100px"/>
+  <RouterView style="margin-top:108px"/>
 </template>
 
 <style scoped lang="scss">

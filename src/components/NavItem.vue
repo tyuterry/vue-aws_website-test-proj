@@ -11,7 +11,6 @@ const emit = defineEmits<{
 let selfnowhover: boolean = false;
 let selfshow: Ref<boolean> = ref(false);
 
-let test = ref(true);
 
 watch(prop, async (newprop, oldprop) => {
   if (prop.hover) {
