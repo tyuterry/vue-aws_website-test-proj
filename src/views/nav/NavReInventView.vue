@@ -15,7 +15,7 @@ class TitleLink {
 
 class Category {
   text: string = "";
-  data: TitleLink[] = [];
+  childs: TitleLink[] = [];
 }
 
 class Bulletin {
@@ -23,13 +23,13 @@ class Bulletin {
   categorys: Category[] = [];
 }
 
-class dataClass {
+class DataClass {
   title: string = "";
   sublink: SubLink[] = [];
   bulletins: Bulletin[] = [];
 }
 
-let data: dataClass = {
+let data: DataClass = {
   title: "2022 年 11 月 28 日至 12 月 2 日",
   sublink: [
     {
@@ -55,7 +55,7 @@ let data: dataClass = {
       categorys: [
         {
           text: "分析",
-          data: [
+          childs: [
             {
               title: "Amazon DataZone (預覽)",
               text: "使用內建控管功能，解鎖跨組織界限的資料",
@@ -110,7 +110,7 @@ let data: dataClass = {
         },
         {
           text: "商業應用程式",
-          data: [
+          childs: [
             {
               title: "Amazon DataZone (預覽)",
               text: "使用內建控管功能，解鎖跨組織界限的資料",
@@ -149,7 +149,7 @@ let data: dataClass = {
       categorys: [
         {
           text: "資料庫",
-          data: [
+          childs: [
             {
               title: "Amazon Aurora 與 Amazon Redshift 的零 ETL 整合 (預覽版)",
               text: "Amazon Aurora 現在支援與 Amazon Redshift 的零擷取、轉換和載入 (ETL) 整合",
@@ -159,7 +159,7 @@ let data: dataClass = {
         },
         {
           text: "開發人員工具",
-          data: [
+          childs: [
             {
               title: "Amazon CodeCatalyst (預覽版)",
               text: "統一的軟體開發服務，可在 AWS 上加快開發和交付速度",
@@ -169,7 +169,7 @@ let data: dataClass = {
         },
         {
           text: "機器學習和 AI",
-          data: [
+          childs: [
             { title: "Amazon Omics", text: "將組學資料轉換為洞察", link: "" },
             {
               title: "Amazon SageMaker 現在支援地理空間 ML (預覽版)",
@@ -190,15 +190,16 @@ let data: dataClass = {
 </script>
 
 <template>
-  <div class="reInvertBlock">
+  <div class="reInvertContent">
     <div class="reInventMargin">
       <div class="reInventGap flex-row">
         <div class="flex-30">
           <div class="reInventImg"></div>
           <div class="reInventTitle">{{ data.title }}</div>
           <LinkTitleVue
+            class="title-padding"
             v-for="item of data.sublink"
-            :text="item.text"
+            :title="item.text"
             :link="item.link"
           />
         </div>
@@ -207,7 +208,7 @@ let data: dataClass = {
             <div class="reInventBulletinTxt">{{ bulletin.text }}</div>
             <CategoryBlockVue
               v-for="category of bulletin.categorys"
-              :datas="category.data"
+              :childs="category.childs"
               :text="category.text"
             />
           </div>
@@ -218,42 +219,7 @@ let data: dataClass = {
 </template>
 
 <style scoped lang="scss">
-.reInventMargin {
-  margin: 40px 0 40px 0;
-}
-.flex-40 {
-  flex: 40;
-}
-.flex-60 {
-  flex: 60;
-}
-
-.reInventTitle {
-  color: var(--aws-text-white);
-  font-size: x-large;
-}
-
-.reInventImg {
-  height: 45px;
-  width: 300px;
-  background: transparent url("../assets/image/reinvent_nav_logo.svg") no-repeat
-    scroll 0 0;
-}
-.reInventBulletin {
-  margin-top: 20px;
-}
-.reInventBulletinTxt {
-  color: var(--aws-text-white);
-  font-size: x-large;
-  font-weight: bold;
-  height: 40px;
-}
-
-.reInventGap {
-  gap: 20px;
-}
-
-.reInvertBlock {
+.reInvertContent {
   margin: 0 10% 0 10%;
   padding: 0 calc(5% + 15px) 0 5%;
   overflow: hidden;
@@ -262,6 +228,38 @@ let data: dataClass = {
     overflow: auto;
     padding: 0 5% 0 5%;
   }
-  margin: 0 10% 0 10%;
+
+  .reInventMargin {
+    margin: 40px 0 40px 0;
+
+    .reInventTitle {
+      color: var(--aws-text-white);
+      font-size: x-large;
+    }
+
+    .reInventImg {
+      height: 45px;
+      width: 300px;
+      background: transparent
+        url("../../assets/image/Nav/reinvent_nav_logo.svg") no-repeat scroll 0 0;
+    }
+
+    .title-padding {
+      padding: 5px;
+    }
+  }
+  .reInventGap {
+    gap: 20px;
+
+    .reInventBulletin {
+      margin-top: 20px;
+    }
+    .reInventBulletinTxt {
+      color: var(--aws-text-white);
+      font-size: x-large;
+      font-weight: bold;
+      height: 40px;
+    }
+  }
 }
 </style>

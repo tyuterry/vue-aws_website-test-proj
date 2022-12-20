@@ -1,19 +1,16 @@
 <script setup lang="ts">
-  let prop = defineProps(['text', 'link'])
+  let prop = defineProps(['title', 'link'])
 </script>
 
 <template>
-  <div class="titlelink-padding">
-    <a :href="prop.link" class="titlelink">{{prop.text}}</a>
+  <div>
+    <a :href="prop.link" class="titleLink txt-no_">{{prop.title}}</a>
   </div>
 </template>
 
 
 <style scoped lang="scss">
-  .titlelink-padding{
-    padding: 5px;
-  }
-  .titlelink{
+  .titleLink{
     color: var(--aws-text);
     text-decoration: none;
 

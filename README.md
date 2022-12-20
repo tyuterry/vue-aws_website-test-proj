@@ -9,6 +9,8 @@
   @fortawesome/fontawesome-svg-core    // icon package core 
 
   @fortawesome/free-solid-svg-icons    // icon
+  
+  @fortawesome/free-regular-svg-icons    // icon
 
   @fortawesome/vue-fontawesome@latest-3// icon vue component
 
