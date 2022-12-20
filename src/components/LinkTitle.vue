@@ -1,16 +1,16 @@
 <script setup lang="ts">
-  let prop = defineProps(['text', 'link'])
+  let prop = defineProps(['title', 'link'])
 </script>
 
 <template>
   <div>
-    <a :href="prop.link" class="titlelink">{{prop.text}}</a>
+    <a :href="prop.link" class="titleLink txt-no_">{{prop.title}}</a>
   </div>
 </template>
 
 
 <style scoped lang="scss">
-  .titlelink{
+  .titleLink{
     color: var(--aws-text);
     text-decoration: none;
 

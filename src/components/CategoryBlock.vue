@@ -1,16 +1,16 @@
 <script setup lang="ts">
   import LinkTitleAndSummaryVue from './LinkTitleAndSummary.vue';
 
-  let prop = defineProps(['text', 'datas'])
+  let prop = defineProps(['text', 'childs'])
 </script>
 
 
 <template>
-  <div class="category-margin">
-    <div class="categorytxt">{{prop.text}}</div>
+  <div class="category">
+    <div class="categoryText">{{prop.text}}</div>
     <hr />
-    <div v-for="data of prop.datas">
-      <LinkTitleAndSummaryVue :title="data.title" :text="data.text" :link="data.link" />
+    <div v-for="child of prop.childs">
+      <LinkTitleAndSummaryVue :title="child.title" :text="child.text" :link="child.link" />
     </div>
   </div>
 </template>
@@ -18,11 +18,12 @@
 
 <style scoped lang="scss">
 
-.category-margin{
+.category{
   margin-top:40px;
+  .categoryText{
+    font-size: medium;
+  }
 }
-.categorytxt{
-  font-size: medium;
-}
+
 
 </style>

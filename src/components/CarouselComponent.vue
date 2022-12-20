@@ -25,7 +25,7 @@ function carouselStart() {
   carouselIndexCalc(1);
 }
 
-function onleftClick() {
+function onLeftClick() {
   carouselIndexCalc(-1);
 }
 function onRightClick() {
@@ -48,15 +48,15 @@ function carouselIndexCalc(addnum: number) {
 
 <template>
   <div style="position: initial;" @mouseenter="onMouseEnter()" @mouseleave="onMouseLeave()">
-    <div class="caroueslBtn left pointer" @click="onleftClick()">
+    <div class="caroueslBtn left pointer absolute" @click="onLeftClick()">
       <FAicon icon="fa-solid fa-chevron-left" />
     </div>
-    <div class="caroueslBtn right pointer" @click="onRightClick()">
+    <div class="caroueslBtn right pointer absolute" @click="onRightClick()">
       <FAicon icon="fa-solid fa-chevron-right" />
     </div>
     <TransitionGroup name="list" mode="out-in">
       <div
-        class="carousel"
+        class="carouselBody absolute"
         v-for="(slot, index) of prop.slots"
         :key="index"
         v-show="index == carouselIndex"
@@ -64,7 +64,7 @@ function carouselIndexCalc(addnum: number) {
         <slot :name="slot[prop.indexpath]"></slot>
       </div>
     </TransitionGroup>
-    <div class="flex-row carouselNavBtn">
+    <div class="flex-row carouselNavBtn absolute">
       <div v-for="(slot, index) of prop.slots">
         <FAicon
           class="pointer"
@@ -83,19 +83,33 @@ function carouselIndexCalc(addnum: number) {
 </template>
 
 <style scoped lang="scss">
-.carousel {
+.carouselBody {
   width: 100vw;
-  position: absolute;
 }
-
 .carouselNavBtn {
   justify-content: center;
   gap: 10px;
   bottom: 0;
-  position: absolute;
   width: 100%;
   margin-bottom: 20px;
 }
+.caroueslBtn {
+  height: 100%;
+  width: 60px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 20px;
+  font-size: xx-large;
+  &.left {
+    left: 0;
+  }
+  &.right {
+    right: 0;
+  }
+}
+
 
 .list-enter-active,
 .list-leave-active {
@@ -109,24 +123,5 @@ function carouselIndexCalc(addnum: number) {
 .list-leave-to {
   opacity: 0;
   transform: translateX(-100%);
-}
-
-.caroueslBtn {
-  position: absolute;
-  height: 100%;
-  width: 60px;
-  z-index: 5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 20px;
-  font-size: xx-large;
-  &.left {
-    left: 0;
-  }
-
-  &.right {
-    right: 0;
-  }
 }
 </style>

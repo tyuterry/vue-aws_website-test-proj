@@ -1,7 +1,7 @@
 @import './base.scss';
 
 
-
+/* Position */
 .relative{
   position: relative;
 }
@@ -15,6 +15,7 @@
   position: fixed;
 }
 
+/* Display */
 .block{
   display: block;
 }
@@ -25,22 +26,52 @@
   display: inline-block;
 }
 
+/* Quick Class */
+
 .pointer{
   cursor: pointer;
 }
-
 .txt-no_{
   text-decoration: none;
 }
-
 .full-width{
   width: 100%;
 }
 
+
+/* Scroll */
+
+.noScroll {
+  overflow: hidden;
+}
+::-webkit-scrollbar {
+  width: 15px;
+}
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1; 
+  border: 4px solid transparent;
+  border-radius: 9px;
+  background-clip: content-box;
+  &:hover{
+    background: #7d7d7d;
+  }
+}
+
+/* Vue Trasition Basic Animation */
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.2s ease;
+}
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+
+/* Quick Flex */
+
 %flex-container{
   display: flex;
 }
-
 .flex-row{
   @extend %flex-container;
   flex-direction: row;
@@ -49,50 +80,13 @@
   @extend %flex-container;
   flex-direction: column;
 }
-
 .flex-warp{
   @extend %flex-container;
   flex-wrap: wrap;
 }
-
 .flex-auto{
   flex: auto
 }
-
-.noscroll {
-  overflow: hidden;
-}
-
-
-::-webkit-scrollbar {
-  width: 15px;
-}
-
- 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #c1c1c1; 
-  border: 4px solid transparent;
-  border-radius: 9px;
-  background-clip: content-box;
-
-  &:hover{
-    background: #7d7d7d;
-  }
-}
-
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.2s ease;
-}
-
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
-}
-
-
-
 .flex-20{
   flex: 20;
 }

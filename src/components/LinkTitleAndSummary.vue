@@ -3,16 +3,16 @@ let prop = defineProps(["title", "text", "link"]);
 </script>
 
 <template>
-  <div class="LinkTitleblock pointer">
-    <a :href="prop.link" class="LinkTitle">{{ prop.title }}</a>
+  <div class="linkTitleContent pointer">
+    <a :href="prop.link" class="linkTitle">{{ prop.title }}</a>
     <div class="LinkTitleSummary">{{ prop.text }}</div>
   </div>
 </template>
 
 <style scoped lang="scss">
-.LinkTitleblock {
+.linkTitleContent {
   padding-bottom: 2px;
-  .LinkTitle {
+  .linkTitle {
     font-size: small;
     color: var(--aws-text-white);
     text-decoration: none;
@@ -23,7 +23,7 @@ let prop = defineProps(["title", "text", "link"]);
     text-decoration: none;
   }
 
-  &:hover > .LinkTitle {
+  &:hover > .linkTitle {
     color: var(--aws-text-active);
   }
 }

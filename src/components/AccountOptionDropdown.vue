@@ -1,48 +1,54 @@
 <script setup lang="ts">
+import { ref, type Ref, watch } from "vue";
 
-import { ref, type Ref, watch, getCurrentInstance } from 'vue';
+const prop = defineProps(["hover", "childs", "zindex"]);
+let isNowHover: boolean = false;
+let isShow: Ref<boolean> = ref(false);
 
-const instance = getCurrentInstance();
-
-const prop = defineProps(['hover', 'child', 'zindex'])
-let selfnowhover: boolean = false;
-let selfshow: Ref<boolean > = ref(false);
-
-watch(prop, async ( newprop , oldprop ) => {
+watch(prop, async (newprop, oldprop) => {
   if (prop.hover) {
-    selfshow.value = true;
-  } else if (!selfnowhover) {
-    selfshow.value = false;
+    isShow.value = true;
+  } else if (!isNowHover) {
+    isShow.value = false;
   }
-})
+});
 
-
-function mouseenter() {
-  selfnowhover = true;
-  selfshow.value = true;
+function onMouseEnter() {
+  isNowHover = true;
+  isShow.value = true;
 }
 
-function mouseleave() {
-  selfnowhover = false;
+function onMouseLeave() {
+  isNowHover = false;
   setTimeout(() => {
-    if (!selfnowhover && !prop.hover) {
-      selfshow.value = false;
+    if (!isNowHover && !prop.hover) {
+      isShow.value = false;
     }
   }, 1000);
 }
-function closeDropdown(){
-    selfnowhover = false;
-    selfshow.value = false;
-  }
+function closeDropdown() {
+  isNowHover = false;
+  isShow.value = false;
+}
 </script>
 
 <template>
   <div class="inline">
     <FAicon icon="fa-solid fa-caret-down" />
-    <div v-show="selfshow" :style="{zIndex:prop.zindex}" class="dropdown absolute" @mouseenter="mouseenter" @mouseleave="mouseleave">
-      <div class="up absolute "></div>
-      <FAicon icon="fa-solid fa-xmark" class="xmark noHover pointer" @click="closeDropdown()"/>
-      <div v-for="child of prop.child" class="dropdownitem pointer">
+    <div
+      v-show="isShow"
+      :style="{ zIndex: prop.zindex }"
+      class="dropDownArea absolute"
+      @mouseenter="onMouseEnter"
+      @mouseleave="onMouseLeave"
+    >
+      <div class="upArrow absolute"></div>
+      <FAicon
+        icon="fa-solid fa-xmark"
+        class="xMark noHover pointer"
+        @click="closeDropdown()"
+      />
+      <div v-for="child of prop.childs" class="dropDownItem pointer no-txt_">
         <a :href="child.href">{{ child.name }}</a>
       </div>
     </div>
@@ -50,7 +56,7 @@ function closeDropdown(){
 </template>
 
 <style scoped lang="scss">
-.dropdown {
+.dropDownArea {
   left: 0;
   background-color: var(--aws-background-white);
   border-radius: 5px;
@@ -58,20 +64,19 @@ function closeDropdown(){
   transform: translate(-50%, 5px);
 }
 
-.dropdownitem,
-.dropdownitem>a {
+.dropDownItem,
+.dropDownItem > a {
   padding: 5px;
   white-space: nowrap;
   color: var(--aws-text-dark);
   font-size: small;
-  text-decoration: none;
 
   &:hover {
     color: var(--aws-text-active);
   }
 }
 
-.up {
+.upArrow {
   width: 0;
   height: 0;
   border-style: solid;
@@ -81,7 +86,7 @@ function closeDropdown(){
   right: 50%;
 }
 
-.xmark{
+.xMark {
   color: var(--aws-text-dark);
   position: absolute;
   top: 5px;

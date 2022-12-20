@@ -12,21 +12,21 @@ class TitleLink {
 
 class CategoryWithTitleLink {
   title: string = "";
-  data: TitleLink[] = [];
+  childs: TitleLink[] = [];
 }
 
 class Category {
   text: string = "";
   link: string = "";
-  data: TitleLink[] = [];
-  resource: CategoryWithTitleLink[] = [];
+  childs: TitleLink[] = [];
+  resources: CategoryWithTitleLink[] = [];
 }
 let categoryIndex = ref(0);
-let categorydata: Category[] = [
+let categoryData: Category[] = [
   {
     text: "特色服務",
     link: "",
-    data: [
+    childs: [
       {
         title: "Amazon EC2",
         text: "雲端的虛擬伺服器",
@@ -73,10 +73,10 @@ let categorydata: Category[] = [
         link: "",
       },
     ],
-    resource: [
+    resources: [
       {
         title: "資源和媒體",
-        data: [
+        childs: [
           {
             title: "部落格",
             text: "閱讀最新的 AWS 部落格文章",
@@ -91,7 +91,7 @@ let categorydata: Category[] = [
       },
       {
         title: "客戶支援",
-        data: [
+        childs: [
           {
             title: "AWS IQ",
             text: "在 AWS 認證的第三方專家協助下更快地完成專案",
@@ -119,7 +119,7 @@ let categorydata: Category[] = [
   {
     text: "分析",
     link: "",
-    data: [
+    childs: [
       { title: "Amazon Athena", text: "使用 SQL 查詢 S3 的資料", link: "" },
       { title: "Amazon CloudSearch", text: "受管搜尋服務", link: "" },
       {
@@ -168,10 +168,10 @@ let categorydata: Category[] = [
         link: "",
       },
     ],
-    resource: [
+    resources: [
       {
         title: "資源和媒體",
-        data: [
+        childs: [
           { title: "部落格", text: "閱讀最新的大數據部落格文章", link: "" },
           {
             title: "AWS 最新消息",
@@ -182,7 +182,7 @@ let categorydata: Category[] = [
       },
       {
         title: "客戶支援",
-        data: [
+        childs: [
           {
             title: "AWS IQ",
             text: "在 AWS 認證的第三方專家協助下更快地完成專案",
@@ -210,453 +210,453 @@ let categorydata: Category[] = [
   {
     text: "應用程式整合",
     link: "",
-    data: [
+    childs: [
       {
         title: "",
         text: "",
         link: "",
       },
     ],
-    resource: [
+    resources: [
       {
         title: "",
-        data: [],
+        childs: [],
       },
     ],
   },
   {
     text: "區塊鏈",
     link: "",
-    data: [
+    childs: [
       {
         title: "",
         text: "",
         link: "",
       },
     ],
-    resource: [
+    resources: [
       {
         title: "",
-        data: [],
+        childs: [],
       },
     ],
   },
   {
     text: "商業應用程式",
     link: "",
-    data: [
+    childs: [
       {
         title: "",
         text: "",
         link: "",
       },
     ],
-    resource: [
+    resources: [
       {
         title: "",
-        data: [],
+        childs: [],
       },
     ],
   },
   {
     text: "雲端財務管理",
     link: "",
-    data: [
+    childs: [
       {
         title: "",
         text: "",
         link: "",
       },
     ],
-    resource: [
+    resources: [
       {
         title: "",
-        data: [],
+        childs: [],
       },
     ],
   },
   {
     text: "運算",
     link: "",
-    data: [
+    childs: [
       {
         title: "",
         text: "",
         link: "",
       },
     ],
-    resource: [
+    resources: [
       {
         title: "",
-        data: [],
+        childs: [],
       },
     ],
   },
   {
     text: "聯絡中心",
     link: "",
-    data: [
+    childs: [
       {
         title: "",
         text: "",
         link: "",
       },
     ],
-    resource: [
+    resources: [
       {
         title: "",
-        data: [],
+        childs: [],
       },
     ],
   },
   {
     text: "容器",
     link: "",
-    data: [
+    childs: [
       {
         title: "",
         text: "",
         link: "",
       },
     ],
-    resource: [
+    resources: [
       {
         title: "",
-        data: [],
+        childs: [],
       },
     ],
   },
   {
     text: "資料庫",
     link: "",
-    data: [
+    childs: [
       {
         title: "",
         text: "",
         link: "",
       },
     ],
-    resource: [
+    resources: [
       {
         title: "",
-        data: [],
+        childs: [],
       },
     ],
   },
   {
     text: "開發人員工具",
     link: "",
-    data: [
+    childs: [
       {
         title: "",
         text: "",
         link: "",
       },
     ],
-    resource: [
+    resources: [
       {
         title: "",
-        data: [],
+        childs: [],
       },
     ],
   },
   {
     text: "最終使用者運算",
     link: "",
-    data: [
+    childs: [
       {
         title: "",
         text: "",
         link: "",
       },
     ],
-    resource: [
+    resources: [
       {
         title: "",
-        data: [],
+        childs: [],
       },
     ],
   },
   {
     text: "前端 Web 與行動",
     link: "",
-    data: [
+    childs: [
       {
         title: "",
         text: "",
         link: "",
       },
     ],
-    resource: [
+    resources: [
       {
         title: "",
-        data: [],
+        childs: [],
       },
     ],
   },
   {
     text: "遊戲",
     link: "",
-    data: [
+    childs: [
       {
         title: "",
         text: "",
         link: "",
       },
     ],
-    resource: [
+    resources: [
       {
         title: "",
-        data: [],
+        childs: [],
       },
     ],
   },
   {
     text: "物聯網",
     link: "",
-    data: [
+    childs: [
       {
         title: "",
         text: "",
         link: "",
       },
     ],
-    resource: [
+    resources: [
       {
         title: "",
-        data: [],
+        childs: [],
       },
     ],
   },
   {
     text: "機器學習",
     link: "",
-    data: [
+    childs: [
       {
         title: "",
         text: "",
         link: "",
       },
     ],
-    resource: [
+    resources: [
       {
         title: "",
-        data: [],
+        childs: [],
       },
     ],
   },
   {
     text: "管理與管控",
     link: "",
-    data: [
+    childs: [
       {
         title: "",
         text: "",
         link: "",
       },
     ],
-    resource: [
+    resources: [
       {
         title: "",
-        data: [],
+        childs: [],
       },
     ],
   },
   {
     text: "媒體服務",
     link: "",
-    data: [
+    childs: [
       {
         title: "",
         text: "",
         link: "",
       },
     ],
-    resource: [
+    resources: [
       {
         title: "",
-        data: [],
+        childs: [],
       },
     ],
   },
   {
     text: "遷移和傳輸",
     link: "",
-    data: [
+    childs: [
       {
         title: "",
         text: "",
         link: "",
       },
     ],
-    resource: [
+    resources: [
       {
         title: "",
-        data: [],
+        childs: [],
       },
     ],
   },
   {
     text: "聯網和內容交付",
     link: "",
-    data: [
+    childs: [
       {
         title: "",
         text: "",
         link: "",
       },
     ],
-    resource: [
+    resources: [
       {
         title: "",
-        data: [],
+        childs: [],
       },
     ],
   },
   {
     text: "量子技術",
     link: "",
-    data: [
+    childs: [
       {
         title: "",
         text: "",
         link: "",
       },
     ],
-    resource: [
+    resources: [
       {
         title: "",
-        data: [],
+        childs: [],
       },
     ],
   },
   {
     text: "機器人",
     link: "",
-    data: [
+    childs: [
       {
         title: "",
         text: "",
         link: "",
       },
     ],
-    resource: [
+    resources: [
       {
         title: "",
-        data: [],
+        childs: [],
       },
     ],
   },
   {
     text: "衛星",
     link: "",
-    data: [
+    childs: [
       {
         title: "",
         text: "",
         link: "",
       },
     ],
-    resource: [
+    resources: [
       {
         title: "",
-        data: [],
+        childs: [],
       },
     ],
   },
   {
     text: "安全、身分和合規",
     link: "",
-    data: [
+    childs: [
       {
         title: "",
         text: "",
         link: "",
       },
     ],
-    resource: [
+    resources: [
       {
         title: "",
-        data: [],
+        childs: [],
       },
     ],
   },
   {
     text: "無伺服器",
     link: "",
-    data: [
+    childs: [
       {
         title: "",
         text: "",
         link: "",
       },
     ],
-    resource: [
+    resources: [
       {
         title: "",
-        data: [],
+        childs: [],
       },
     ],
   },
   {
     text: "儲存",
     link: "",
-    data: [
+    childs: [
       {
         title: "",
         text: "",
         link: "",
       },
     ],
-    resource: [
+    resources: [
       {
         title: "",
-        data: [],
+        childs: [],
       },
     ],
   },
 ];
 
-function onmouseenter(index: number) {
+function onMouseEnter(index: number) {
   categoryIndex.value = index;
 }
 </script>
 
 <template>
-  <div class="flex-row product-block">
+  <div class="flex-row productContent">
     <div class="flex-20 category">
       <div
-        v-for="(data, index) of categorydata"
+        v-for="(data, index) of categoryData"
         class="item pointer"
-        @mouseenter="onmouseenter(index)"
+        @mouseenter="onMouseEnter(index)"
       >
         {{ data.text }}
       </div>
     </div>
-    <div class="productlist category flex-40">
+    <div class="productList category flex-40">
       <LinkTitleVue
         class="padding"
-        :text="categorydata[categoryIndex].text"
-        :link="categorydata[categoryIndex].link"
+        :title="categoryData[categoryIndex].text"
+        :link="categoryData[categoryIndex].link"
       />
       <LinkTitleAndSummary
         class="padding"
-        v-for="data of categorydata[categoryIndex].data"
-        :title="data.title"
-        :text="data.text"
-        :link="data.link"
+        v-for="child of categoryData[categoryIndex].childs"
+        :title="child.title"
+        :text="child.text"
+        :link="child.link"
       />
     </div>
     <div class="media-resource flex-40 flex-column">
-      <div v-for="data of categorydata[categoryIndex].resource">
-        {{ data.title }}
+      <div v-for="resource of categoryData[categoryIndex].resources">
+        {{ resource.title }}
         <div class="flex-warp flex-row">
           <ResourceBlockVue
-            class="mediablock"
-            v-for="data2 of data.data"
-            :title="data2.title"
-            :text="data2.text"
-            :link="data2.link"
+            class="mediaContent"
+            v-for="child of resource.childs"
+            :title="child.title"
+            :text="child.text"
+            :link="child.link"
           />
         </div>
       </div>
@@ -665,7 +665,7 @@ function onmouseenter(index: number) {
 </template>
 
 <style scoped lang="scss">
-.product-block {
+.productContent {
   margin: 0px 50px;
   height: 100%;
 }
@@ -681,7 +681,7 @@ function onmouseenter(index: number) {
   }
 }
 
-.productlist {
+.productList {
   padding: 30px 20px;
   overflow: auto;
   .padding {
@@ -692,7 +692,7 @@ function onmouseenter(index: number) {
 .media-resource {
   padding: 30px 20px;
   overflow: auto;
-  .mediablock {
+  .mediaContent {
     margin: 5px;
     flex: 1 0 47%;
   }
