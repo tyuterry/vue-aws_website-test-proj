@@ -1,35 +1,33 @@
 <script setup lang="ts">
-  let prop = defineProps(['title', 'text'])
+let prop = defineProps(["title", "text"]);
 </script>
 
 <template>
-<div class="resourceContent flex-auto pointer">
-  <div class="textPadding title">{{ prop.title }}</div>
-  <hr style="margin:0 10px" />
-  <div class="textPadding text">{{ prop.text }}</div>
-</div>
+  <div class="resourceContent flex-auto pointer">
+    <div class="textPadding title">{{ prop.title }}</div>
+    <hr style="margin: 0 10px" />
+    <div class="textPadding text">{{ prop.text }}</div>
+  </div>
 </template>
 
-
 <style scoped lang="scss">
-.resourceContent{
+.resourceContent {
   border: 1px solid;
   border-top: 5px solid #00a2ca;
-  .textPadding{
+  .textPadding {
     padding: 5px 15px;
   }
 
-  .title{
+  .title {
     font-size: small;
   }
 
-  .text{
+  .text {
     color: var(--aws-text-white);
     font-size: small;
-    &:hover{
+    &:hover {
       color: var(--aws-text-active);
     }
   }
 }
-
 </style>

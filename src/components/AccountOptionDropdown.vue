@@ -1,11 +1,18 @@
 <script setup lang="ts">
 import { ref, type Ref, watch } from "vue";
 
-const prop = defineProps(["hover", "childs", "zindex"]);
+const prop = defineProps(
+  // {
+  //   "hover": Boolean,
+  //   "childs": AccountOption,
+  //   "zindex" : Number,
+  // }
+  ["hover", "childs", "zindex"]
+);
 let isNowHover: boolean = false;
 let isShow: Ref<boolean> = ref(false);
 
-watch(prop, async (newprop, oldprop) => {
+watch(prop, async () => {
   if (prop.hover) {
     isShow.value = true;
   } else if (!isNowHover) {
@@ -48,7 +55,11 @@ function closeDropdown() {
         class="xMark noHover pointer"
         @click="closeDropdown()"
       />
-      <div v-for="child of prop.childs" class="dropDownItem pointer no-txt_">
+      <div
+        v-for="child of prop.childs"
+        :key="child"
+        class="dropDownItem pointer no-txt_"
+      >
         <a :href="child.href">{{ child.name }}</a>
       </div>
     </div>

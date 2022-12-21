@@ -9,8 +9,7 @@ const emit = defineEmits<{
 let isNowHover: boolean = false;
 let isShow: Ref<boolean> = ref(false);
 
-
-watch(prop, async (newprop, oldprop) => {
+watch(prop, async () => {
   if (prop.hover) {
     isShow.value = true;
     emit("showChange", true);
@@ -22,8 +21,12 @@ watch(prop, async (newprop, oldprop) => {
 
 function onMouseEnter() {
   isNowHover = true;
-  isShow.value = true;
-  emit("showChange", true);
+  setTimeout(() => {
+    if (isNowHover == true) {
+      isShow.value = true;
+      emit("showChange", true);
+    }
+  }, 500);
 }
 
 function onMouseLeave() {
@@ -36,7 +39,7 @@ function onMouseLeave() {
   }, 500);
 }
 
-function closeNavItem(){
+function closeNavItem() {
   isNowHover = false;
   isShow.value = false;
   emit("showChange", false);
@@ -92,15 +95,12 @@ function closeNavItem(){
   transition: opacity 0.1s ease, transform 0.1s ease;
 }
 
-.down-enter-from{
+.down-enter-from {
   opacity: 0;
   transform: translateY(-50px);
 }
-.down-enter-to
- {
+.down-enter-to {
   opacity: 1;
   transform: translateY(0);
 }
-
-
 </style>

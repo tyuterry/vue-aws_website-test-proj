@@ -1,35 +1,9 @@
 <script setup lang="ts">
 import LinkTitleVue from "@/components/LinkTitle.vue";
 import CategoryBlockVue from "@/components/CategoryBlock.vue";
+import type { NavReInventViewData } from "@/models/NavReInventViewData.model";
 
-class SubLink {
-  text: string = "";
-  link: string = "";
-}
-
-class TitleLink {
-  title: string = "";
-  text: string = "";
-  link: string = "";
-}
-
-class Category {
-  text: string = "";
-  childs: TitleLink[] = [];
-}
-
-class Bulletin {
-  text: string = "";
-  categorys: Category[] = [];
-}
-
-class DataClass {
-  title: string = "";
-  sublink: SubLink[] = [];
-  bulletins: Bulletin[] = [];
-}
-
-let data: DataClass = {
+let data: NavReInventViewData = {
   title: "2022 年 11 月 28 日至 12 月 2 日",
   sublink: [
     {
@@ -54,7 +28,7 @@ let data: DataClass = {
       text: "特色公告",
       categorys: [
         {
-          text: "分析",
+          title: "分析",
           childs: [
             {
               title: "Amazon DataZone (預覽)",
@@ -109,7 +83,7 @@ let data: DataClass = {
           ],
         },
         {
-          text: "商業應用程式",
+          title: "商業應用程式",
           childs: [
             {
               title: "Amazon DataZone (預覽)",
@@ -148,7 +122,7 @@ let data: DataClass = {
       text: "",
       categorys: [
         {
-          text: "資料庫",
+          title: "資料庫",
           childs: [
             {
               title: "Amazon Aurora 與 Amazon Redshift 的零 ETL 整合 (預覽版)",
@@ -158,7 +132,7 @@ let data: DataClass = {
           ],
         },
         {
-          text: "開發人員工具",
+          title: "開發人員工具",
           childs: [
             {
               title: "Amazon CodeCatalyst (預覽版)",
@@ -168,7 +142,7 @@ let data: DataClass = {
           ],
         },
         {
-          text: "機器學習和 AI",
+          title: "機器學習和 AI",
           childs: [
             { title: "Amazon Omics", text: "將組學資料轉換為洞察", link: "" },
             {
@@ -199,17 +173,23 @@ let data: DataClass = {
           <LinkTitleVue
             class="title-padding"
             v-for="item of data.sublink"
+            :key="item.text"
             :title="item.text"
             :link="item.link"
           />
         </div>
         <div class="flex-70 flex-row reInventGap">
-          <div v-for="bulletin of data.bulletins" class="reInventBulletin">
+          <div
+            v-for="bulletin of data.bulletins"
+            :key="bulletin.text"
+            class="reInventBulletin"
+          >
             <div class="reInventBulletinTxt">{{ bulletin.text }}</div>
             <CategoryBlockVue
               v-for="category of bulletin.categorys"
+              :key="category.title"
               :childs="category.childs"
-              :text="category.text"
+              :text="category.title"
             />
           </div>
         </div>

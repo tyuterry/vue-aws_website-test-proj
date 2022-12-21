@@ -3,26 +3,10 @@ import LinkTitleAndSummary from "@/components/LinkTitleAndSummary.vue";
 import LinkTitleVue from "@/components/LinkTitle.vue";
 import { ref } from "vue";
 import ResourceBlockVue from "@/components/ResourceBlock.vue";
+import type { NavItem } from "@/models/NavItem.model";
 
-class TitleLink {
-  title: string = "";
-  text: string = "";
-  link: string = "";
-}
-
-class CategoryWithTitleLink {
-  title: string = "";
-  childs: TitleLink[] = [];
-}
-
-class Category {
-  text: string = "";
-  link: string = "";
-  childs: TitleLink[] = [];
-  resources: CategoryWithTitleLink[] = [];
-}
 let categoryIndex = ref(0);
-let categoryData: Category[] = [
+const navItemData: NavItem[] = [
   {
     text: "特色服務",
     link: "",
@@ -626,7 +610,8 @@ function onMouseEnter(index: number) {
   <div class="flex-row productContent">
     <div class="flex-20 category">
       <div
-        v-for="(data, index) of categoryData"
+        v-for="(data, index) of navItemData"
+        :key="data.text"
         class="item pointer"
         @mouseenter="onMouseEnter(index)"
       >
@@ -636,24 +621,29 @@ function onMouseEnter(index: number) {
     <div class="productList category flex-40">
       <LinkTitleVue
         class="padding"
-        :title="categoryData[categoryIndex].text"
-        :link="categoryData[categoryIndex].link"
+        :title="navItemData[categoryIndex].text"
+        :link="navItemData[categoryIndex].link"
       />
       <LinkTitleAndSummary
         class="padding"
-        v-for="child of categoryData[categoryIndex].childs"
+        v-for="child of navItemData[categoryIndex].childs"
+        :key="child.text"
         :title="child.title"
         :text="child.text"
         :link="child.link"
       />
     </div>
     <div class="media-resource flex-40 flex-column">
-      <div v-for="resource of categoryData[categoryIndex].resources">
+      <div
+        v-for="resource of navItemData[categoryIndex].resources"
+        :key="resource.title"
+      >
         {{ resource.title }}
         <div class="flex-warp flex-row">
           <ResourceBlockVue
             class="mediaContent"
             v-for="child of resource.childs"
+            :key="child.text"
             :title="child.title"
             :text="child.text"
             :link="child.link"
