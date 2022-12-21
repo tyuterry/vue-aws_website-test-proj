@@ -45,20 +45,22 @@ function closeDropdown() {
     <div
       v-show="isShow"
       :style="{ zIndex: prop.zindex }"
-      class="dropDownArea absolute"
+      class="bg-bgWhite left-0 rounded-[5px] p-15px -translate-x-1/2 translate-y-5px absolute"
       @mouseenter="onMouseEnter"
       @mouseleave="onMouseLeave"
     >
-      <div class="upArrow absolute"></div>
+      <div
+        class="right-1/2 w-0 h-0 absolute translate-x-[11px] -translate-y-[20px] border-t-0 border-b-[6px] border-x-[6px] border-[transparent_transparent_white_transparent]"
+      ></div>
       <FAicon
         icon="fa-solid fa-xmark"
-        class="xMark noHover pointer"
+        class="top-5px right-10px text-txtDark absolute cursor-pointer"
         @click="closeDropdown()"
       />
       <div
         v-for="child of prop.childs"
         :key="child"
-        class="dropDownItem pointer no-txt_"
+        class="p-5px whitespace-nowrap text-txtDark font-sm cursor-pointer decoration-0 hover:text-txtActive"
       >
         <a :href="child.href">{{ child.name }}</a>
       </div>
@@ -66,41 +68,4 @@ function closeDropdown() {
   </div>
 </template>
 
-<style scoped lang="scss">
-.dropDownArea {
-  left: 0;
-  background-color: var(--aws-background-white);
-  border-radius: 5px;
-  padding: 15px;
-  transform: translate(-50%, 5px);
-}
-
-.dropDownItem,
-.dropDownItem > a {
-  padding: 5px;
-  white-space: nowrap;
-  color: var(--aws-text-dark);
-  font-size: small;
-
-  &:hover {
-    color: var(--aws-text-active);
-  }
-}
-
-.upArrow {
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 0 6px 6px 6px;
-  border-color: transparent transparent #fff transparent;
-  transform: translate(11px, -20px);
-  right: 50%;
-}
-
-.xMark {
-  color: var(--aws-text-dark);
-  position: absolute;
-  top: 5px;
-  right: 10px;
-}
-</style>
+<style scoped lang="scss"></style>

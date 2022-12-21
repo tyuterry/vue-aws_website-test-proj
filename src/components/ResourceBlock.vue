@@ -3,31 +3,14 @@ let prop = defineProps(["title", "text"]);
 </script>
 
 <template>
-  <div class="resourceContent flex-auto pointer">
-    <div class="textPadding title">{{ prop.title }}</div>
+  <div
+    class="border border-solid border-t-[5px] border-t-[#00a2ca] flex-auto cursor-pointer"
+  >
+    <div class="py-5px px-15px text-sm text-txtWhite">{{ prop.title }}</div>
     <hr style="margin: 0 10px" />
-    <div class="textPadding text">{{ prop.text }}</div>
+    <div class="py-5px px-15px text-sm text-txtWhite hover:text-txtActive">{{ prop.text }}</div>
   </div>
 </template>
 
 <style scoped lang="scss">
-.resourceContent {
-  border: 1px solid;
-  border-top: 5px solid #00a2ca;
-  .textPadding {
-    padding: 5px 15px;
-  }
-
-  .title {
-    font-size: small;
-  }
-
-  .text {
-    color: var(--aws-text-white);
-    font-size: small;
-    &:hover {
-      color: var(--aws-text-active);
-    }
-  }
-}
 </style>

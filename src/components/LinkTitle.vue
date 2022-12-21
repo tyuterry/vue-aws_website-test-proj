@@ -4,17 +4,12 @@ let prop = defineProps(["title", "link"]);
 
 <template>
   <div>
-    <a :href="prop.link" class="titleLink txt-no_">{{ prop.title }}</a>
+    <a
+      :href="prop.link"
+      class="text-txtPaimary decoration-0 hover:text-txtActive"
+      >{{ prop.title }}</a
+    >
   </div>
 </template>
 
-<style scoped lang="scss">
-.titleLink {
-  color: var(--aws-text);
-  text-decoration: none;
-
-  &:hover {
-    color: var(--aws-text-active);
-  }
-}
-</style>
+<style scoped lang="scss"></style>

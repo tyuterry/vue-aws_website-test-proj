@@ -5,8 +5,8 @@ let prop = defineProps(["text", "childs"]);
 </script>
 
 <template>
-  <div class="category">
-    <div class="categoryText">{{ prop.text }}</div>
+  <div class="mt-40px">
+    <div class="text-base">{{ prop.text }}</div>
     <hr />
     <div v-for="child of prop.childs" :key="child">
       <LinkTitleAndSummaryVue
@@ -19,10 +19,4 @@ let prop = defineProps(["text", "childs"]);
 </template>
 
 <style scoped lang="scss">
-.category {
-  margin-top: 40px;
-  .categoryText {
-    font-size: medium;
-  }
-}
 </style>

@@ -55,24 +55,24 @@ function onShadowChange(value: boolean) {
 </script>
 
 <template>
-  <div class="topNav flex-column fixed full-width">
-    <div class="topContent">
+  <div class="box-border top-0 z-[200] flex flex-col fixed w-full">
+    <div class="bg-bgDark py-0 px-8 z-20">
       <div>
-        <div class="logo inline-block">
+        <div class="m-[18px_20px_-12px_10px] inline-block">
           <a href="/home">
-            <span class="logoImg block"
+            <span class="logoImg w-[59px] h-35px indent-[-9999px] block"
               >按一下這裡可返回 Amazon Web Services 首頁</span
             >
           </a>
         </div>
-        <div class="accountOption">
+        <div class="float-right m-[18px_10px_10px_10px]">
           <AccountOption />
         </div>
       </div>
-      <div style="padding-top: 20px">
+      <div class="p-20px">
         <template v-for="(title, index) of navTitle" :key="title">
           <span
-            class="navTitle inline-block pointer"
+            class="text-txtPaimary p-[0px_10px_22px_10px] hover:text-txtActive inline-block cursor-pointer"
             @mouseenter="onMouseEnter(index)"
             @mouseleave="onMouseLeave()"
           >
@@ -81,7 +81,7 @@ function onShadowChange(value: boolean) {
         </template>
       </div>
     </div>
-    <div class="navContainer" :class="{ scrollPadding: isShadowShow }">
+    <div class="flex justify-center" :class="{ 'p-r-15px': isShadowShow }">
       <NavItem :hover="isNavTitleShow" @show-change="onShadowChange">
         <Transition mode="out-in">
           <component :is="navItemViews[navItemTarget]"></component>
@@ -90,7 +90,10 @@ function onShadowChange(value: boolean) {
     </div>
   </div>
   <Transition>
-    <div v-if="isShadowShow" class="fullShadow absolute"></div>
+    <div
+      v-if="isShadowShow"
+      class="w-full h-[100%] top-0 left-0 z-50 bg-white/[.7] absolute"
+    ></div>
   </Transition>
 </template>
 
@@ -98,57 +101,12 @@ function onShadowChange(value: boolean) {
 .noScroll .topNav .top-block {
   padding: 0 calc(2rem + 15px) 0 2rem;
 }
-.topNav {
-  box-sizing: border-box;
-  top: 0;
-  z-index: 200;
-
-  .topContent {
-    background-color: var(--aws-background-dark);
-    padding: 0 2rem;
-    z-index: 20;
-
-    .accountOption {
-      float: right;
-      margin: 18px 10px 10px 10px;
-    }
-
-    .navTitle {
-      color: var(--aws-text);
-      padding: 0px 10px 22px 10px;
-
-      &:hover {
-        color: var(--aws-text-active);
-      }
-    }
-  }
-}
-
-.navContainer {
-  display: flex;
-  justify-content: center;
-}
-.scrollPadding {
+.p-r-15px {
   padding-right: 15px;
 }
 
-.logo {
-  margin: 18px 20px -12px 10px;
-  .logoImg {
-    width: 59px;
-    height: 35px;
-    background: transparent url("../assets/image/Nav/aws_smile_logo.png")
-      no-repeat scroll 0 0;
-    text-indent: -99999px;
-  }
-}
-
-.fullShadow {
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: 50;
-  background-color: rgba(255, 255, 255, 0.7);
+.logoImg {
+  background: transparent url("../assets/image/Nav/aws_smile_logo.png")
+    no-repeat scroll 0 0;
 }
 </style>

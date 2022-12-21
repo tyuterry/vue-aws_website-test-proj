@@ -607,25 +607,25 @@ function onMouseEnter(index: number) {
 </script>
 
 <template>
-  <div class="flex-row productContent">
-    <div class="flex-20 category">
+  <div class="flex flex-row my-0 mx-50px h-[100%]">
+    <div class="basis-1/5">
       <div
         v-for="(data, index) of navItemData"
         :key="data.text"
-        class="item pointer"
+        class="text-txtPaimary p-y-3px hover:text-txtActive cursor-pointer"
         @mouseenter="onMouseEnter(index)"
       >
         {{ data.text }}
       </div>
     </div>
-    <div class="productList category flex-40">
+    <div class="p-y-30px p-x-20px overflow-auto category basis-2/5">
       <LinkTitleVue
-        class="padding"
+        class="pb-20px"
         :title="navItemData[categoryIndex].text"
         :link="navItemData[categoryIndex].link"
       />
       <LinkTitleAndSummary
-        class="padding"
+        class="pb-20px"
         v-for="child of navItemData[categoryIndex].childs"
         :key="child.text"
         :title="child.title"
@@ -633,15 +633,15 @@ function onMouseEnter(index: number) {
         :link="child.link"
       />
     </div>
-    <div class="media-resource flex-40 flex-column">
+    <div class="basis-2/5 p-y-30px p-x-20px text-txtWhite overflow-auto flex flex-col">
       <div
         v-for="resource of navItemData[categoryIndex].resources"
         :key="resource.title"
       >
         {{ resource.title }}
-        <div class="flex-warp flex-row">
+        <div class="flex flex-wrap flex-row">
           <ResourceBlockVue
-            class="mediaContent"
+            class="m-5px flex-[1_0_47%]"
             v-for="child of resource.childs"
             :key="child.text"
             :title="child.title"
@@ -656,35 +656,35 @@ function onMouseEnter(index: number) {
 
 <style scoped lang="scss">
 .productContent {
-  margin: 0px 50px;
-  height: 100%;
+  // margin: 0px 50px;
+  // height: 100%;
 }
-.category {
-  padding: 30px 0;
-  overflow: auto;
-  .item {
-    color: var(--aws-text);
-    padding: 3px 0;
-    &:hover {
-      color: var(--aws-text-active);
-    }
-  }
-}
+// .category {
+//   padding: 30px 0;
+//   overflow: auto;
+//   .item {
+//     color: var(--aws-text);
+//     padding: 3px 0;
+//     &:hover {
+//       color: var(--aws-text-active);
+//     }
+//   }
+// }
 
-.productList {
-  padding: 30px 20px;
-  overflow: auto;
-  .padding {
-    padding-bottom: 10px;
-  }
-}
+// .productList {
+//   padding: 30px 20px;
+//   overflow: auto;
+//   .padding {
+//     padding-bottom: 10px;
+//   }
+// }
 
-.media-resource {
-  padding: 30px 20px;
-  overflow: auto;
-  .mediaContent {
-    margin: 5px;
-    flex: 1 0 47%;
-  }
-}
+// .media-resource {
+//   padding: 30px 20px;
+//   overflow: auto;
+//   .mediaContent {
+//     margin: 5px;
+//     flex: 1 0 47%;
+//   }
+// }
 </style>

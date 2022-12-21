@@ -16,6 +16,23 @@
 
   sass  //scss packge
 
+  tailwindcss //Utitly Css
+  
+  postcss  //Utitly Css
+  
+  autoprefixer  //Utitly Css
+
+
+  # TailWindcss Warn
+  vs code setting 
+  "files.associations": {
+        "*.css": "tailwindcss"
+    }
+
+  # TailWindcss minify
+  npx tailwindcss -o build.css --minify
+
+
 ## Customize configuration
 
 See [Vite Configuration Reference](https://vitejs.dev/config/).

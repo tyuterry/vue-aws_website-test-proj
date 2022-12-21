@@ -50,13 +50,13 @@ function closeNavItem() {
   <Transition name="down">
     <div
       v-show="isShow"
-      class="itemContent inline-block shadow boderTop"
+      class="w-[90%] height-[calc(95vh-108px)] bg-bgDark self-center inline-block shadow-[0px_2px_5px_0px_rgba(0,0,0,0.5)] border-t-[1p_solid_#141a22]"
       @mouseenter="onMouseEnter()"
       @mouseleave="onMouseLeave()"
     >
       <FAicon
         icon="fa-solid fa-xmark"
-        class="xMark pointer"
+        class="text-txtPaimary absolute text-xl top-20px right-20px cursor-pointer"
         @click="closeNavItem()"
       />
       <slot>Seems Nothing Here :(</slot>
@@ -65,31 +65,6 @@ function closeNavItem() {
 </template>
 
 <style scoped lang="scss">
-.itemContent {
-  width: 90%;
-  height: calc(95vh - 108px);
-  background-color: var(--aws-background-dark);
-  align-self: center;
-
-  &.shadow {
-    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.5);
-  }
-
-  &.boderTop {
-    border-top: 1px solid #141a22;
-  }
-
-  .xMark {
-    color: var(--aws-text);
-    position: absolute;
-    font-size: x-large;
-    top: 20px;
-    right: 20px;
-  }
-}
-
-/* Transition name:down Animation */
-
 .down-enter-active,
 .down-leave-active {
   transition: opacity 0.1s ease, transform 0.1s ease;

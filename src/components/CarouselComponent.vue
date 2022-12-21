@@ -52,15 +52,21 @@ function carouselIndexCalc(addnum: number) {
     @mouseenter="onMouseEnter()"
     @mouseleave="onMouseLeave()"
   >
-    <div class="caroueslBtn left pointer absolute" @click="onLeftClick()">
+    <div
+      class="text-txtWhite h-full w-[60px] z-10 flex items-center justify-center my-0 mx-20px text-2xl left-0 cursor-pointer absolute"
+      @click="onLeftClick()"
+    >
       <FAicon icon="fa-solid fa-chevron-left" />
     </div>
-    <div class="caroueslBtn right pointer absolute" @click="onRightClick()">
+    <div
+      class="text-txtWhite h-full w-[60px] z-10 flex items-center justify-center my-0 mx-20px text-2xl right-0 cursor-pointer absolute"
+      @click="onRightClick()"
+    >
       <FAicon icon="fa-solid fa-chevron-right" />
     </div>
     <TransitionGroup name="list" mode="out-in">
       <div
-        class="carouselBody absolute"
+        class="w-screen absolute"
         v-for="(slot, index) of prop.slots"
         :key="index"
         v-show="index == carouselIndex"
@@ -68,15 +74,15 @@ function carouselIndexCalc(addnum: number) {
         <slot :name="slot[prop.indexpath]"></slot>
       </div>
     </TransitionGroup>
-    <div class="flex-row carouselNavBtn absolute">
+    <div class="flex-row gap-10px bottom-0 width-full mb-20px justify-center absolute">
       <div v-for="(slot, index) of prop.slots" :key="slot">
         <FAicon
-          class="pointer"
+          class="cursor-pointer"
           v-show="index == carouselIndex"
           icon="fa-solid fa-circle"
         />
         <FAicon
-          class="pointer"
+          class="cursor-pointer"
           v-show="index != carouselIndex"
           @click="onNavBtnClick(index)"
           icon="fa-regular fa-circle"
@@ -87,32 +93,8 @@ function carouselIndexCalc(addnum: number) {
 </template>
 
 <style scoped lang="scss">
-.carouselBody {
-  width: 100vw;
-}
-.carouselNavBtn {
-  justify-content: center;
-  gap: 10px;
-  bottom: 0;
-  width: 100%;
-  margin-bottom: 20px;
-}
-.caroueslBtn {
-  height: 100%;
-  width: 60px;
-  z-index: 5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 20px;
-  font-size: xx-large;
-  &.left {
-    left: 0;
-  }
-  &.right {
-    right: 0;
-  }
-}
+
+
 
 .list-enter-active,
 .list-leave-active {

@@ -116,17 +116,17 @@ function getAccountOptZIndex() {
   <template v-for="option in accountOpts" :key="option.id">
     <a
       :href="option.link"
-      class="option pointer txt-no_"
+      class="text-txtPaimary p-10px cursor-pointer decoration-0 hover:text-txtActive"
       v-if="option.childs.length == 0"
       >{{ option.name }}</a
     >
     <span
-      class="option txt-no_"
+      class="text-txtPaimary p-10px cursor-pointer decoration-0 hover:text-txtActive"
       v-if="option.childs.length != 0"
       @mouseenter="onMouseEnter(option)"
       @mouseleave="onMouseLeave(option)"
     >
-      <span class="pointer">{{ option.name }}</span>
+      <span class="cursor-pointer">{{ option.name }}</span>
       <AccountOptionDropdown
         :hover="option.hover"
         :childs="option.childs"
@@ -134,29 +134,10 @@ function getAccountOptZIndex() {
       />
     </span>
   </template>
-  <span class="consoleBtn pointer">登入控制台</span>
+  <span
+    class="text-txtWhite bg-themeColor font-extrabold py-5px px-20px ml-20px rounded-40px cursor-pointer hover:bg-themeColorActive"
+    >登入控制台</span
+  >
 </template>
 
-<style scoped lang="scss">
-.consoleBtn {
-  color: var(--aws-text-white);
-  font-weight: 800;
-  background-color: var(--aws-theme-color);
-  margin-left: 20px;
-  padding: 5px 20px;
-  border-radius: 40px;
-  &:hover {
-    background-color: var(--aws-theme-color-active);
-  }
-}
-
-.option,
-a.option {
-  color: var(--aws-text);
-  padding: 10px;
-
-  &:hover {
-    color: var(--aws-text-active);
-  }
-}
-</style>
+<style scoped lang="scss"></style>
