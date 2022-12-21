@@ -47,7 +47,11 @@ function carouselIndexCalc(addnum: number) {
 </script>
 
 <template>
-  <div style="position: initial;" @mouseenter="onMouseEnter()" @mouseleave="onMouseLeave()">
+  <div
+    style="position: initial"
+    @mouseenter="onMouseEnter()"
+    @mouseleave="onMouseLeave()"
+  >
     <div class="caroueslBtn left pointer absolute" @click="onLeftClick()">
       <FAicon icon="fa-solid fa-chevron-left" />
     </div>
@@ -65,7 +69,7 @@ function carouselIndexCalc(addnum: number) {
       </div>
     </TransitionGroup>
     <div class="flex-row carouselNavBtn absolute">
-      <div v-for="(slot, index) of prop.slots">
+      <div v-for="(slot, index) of prop.slots" :key="slot">
         <FAicon
           class="pointer"
           v-show="index == carouselIndex"
@@ -109,7 +113,6 @@ function carouselIndexCalc(addnum: number) {
     right: 0;
   }
 }
-
 
 .list-enter-active,
 .list-leave-active {

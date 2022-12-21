@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getCurrentInstance, ref, type Ref } from "vue";
+import { ref, type Component, type Ref } from "vue";
 import AccountOption from "./AccountOption.vue";
 import NavItem from "./NavItem.vue";
 
@@ -24,26 +24,22 @@ let isNavTitleNowHover: boolean = false;
 let isNavTitleShow: Ref<boolean> = ref(false);
 let isShadowShow: Ref<boolean> = ref(false);
 
-let navItemTarget = ref("ReInventViewVue");
+let navItemTarget = ref(0);
+const navItemViews: Component[] = [NavReInventViewVue, NavProductViewVue];
 
-const navItemViews = {
-  NavReInventViewVue,
-  NavProductViewVue,
-};
-
-function onMouseEnter(title: string, index: number) {
+function onMouseEnter(index: number) {
   isNavTitleNowHover = true;
   isNavTitleShow.value = true;
 
   let navItemsKey = Object.keys(navItemViews);
   if (navItemsKey.length > index) {
-    navItemTarget.value = Object.keys(navItemViews)[index];
+    navItemTarget.value = index;
   } else {
-    navItemTarget.value = "";
+    navItemTarget.value = 0;
   }
 }
 
-function onMouseLeave(title: string) {
+function onMouseLeave() {
   isNavTitleNowHover = false;
   setTimeout(() => {
     if (isNavTitleNowHover != true) {
@@ -74,11 +70,11 @@ function onShadowChange(value: boolean) {
         </div>
       </div>
       <div style="padding-top: 20px">
-        <template v-for="(title, index) of navTitle">
+        <template v-for="(title, index) of navTitle" :key="title">
           <span
             class="navTitle inline-block pointer"
-            @mouseenter="onMouseEnter(title, index)"
-            @mouseleave="onMouseLeave(title)"
+            @mouseenter="onMouseEnter(index)"
+            @mouseleave="onMouseLeave()"
           >
             {{ title }}
           </span>
@@ -88,7 +84,6 @@ function onShadowChange(value: boolean) {
     <div class="navContainer" :class="{ scrollPadding: isShadowShow }">
       <NavItem :hover="isNavTitleShow" @show-change="onShadowChange">
         <Transition mode="out-in">
-          <!-- <ProductViewVue></ProductViewVue> -->
           <component :is="navItemViews[navItemTarget]"></component>
         </Transition>
       </NavItem>

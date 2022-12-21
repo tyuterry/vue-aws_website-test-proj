@@ -1,42 +1,14 @@
 <script setup lang="ts">
-import { reactive, ref, type Ref } from 'vue';
-import AccountOptionDropdown from './AccountOptionDropdown.vue'
-
-
-class AccountOptData {
-  name: string;
-  link: string;
-  childs: AccountOptData[];
-
-  constructor(name?: string, link?: string, childs?: AccountOptData[]) {
-    this.name = name != null ? name : "";
-    this.link = link != null ? link : "";
-    this.childs = childs != null ? childs : [];
-  }
-}
-
-class AccountOption extends AccountOptData {
-  id: string = "";
-  hover: Ref<boolean> = ref(false);
-  zindex: Ref<number> = ref(0);
-  childs: AccountOption[] = [];
-
-  constructor(accountData: AccountOptData, id: string) {
-    super(accountData.name, accountData.link, accountData.childs);
-    this.id = id;
-    this.hover = false;
-    this.zindex = 0;
-    this.childs = accountData.childs.map((e, index) => {
-      return new AccountOption(e, id + index);
-    });
-  }
-}
+import { AccountOption } from "@/models/AccountOption.model";
+import { AccountOptData } from "@/models/AccountOptionData.model";
+import { reactive } from "vue";
+import AccountOptionDropdown from "./AccountOptionDropdown.vue";
 
 let accountOptData: AccountOptData[] = [
   {
     name: "聯絡我們",
     link: "",
-    childs: []
+    childs: [],
   },
   {
     name: "支援",
@@ -45,24 +17,24 @@ let accountOptData: AccountOptData[] = [
       {
         name: "支援中心",
         link: "",
-        childs: []
+        childs: [],
       },
       {
         name: "知識中心",
         link: "",
-        childs: []
+        childs: [],
       },
       {
         name: "AWS Support 概觀",
         link: "",
-        childs: []
+        childs: [],
       },
       {
         name: "AWS re:Post",
         link: "",
-        childs: []
+        childs: [],
       },
-    ]
+    ],
   },
   {
     name: "中文(繁體)",
@@ -71,19 +43,19 @@ let accountOptData: AccountOptData[] = [
       {
         name: "English",
         link: "",
-        childs: []
+        childs: [],
       },
       {
         name: "中文(繁體)",
         link: "",
-        childs: []
+        childs: [],
       },
       {
         name: "中文 (简体)",
         link: "",
-        childs: []
+        childs: [],
       },
-    ]
+    ],
   },
   {
     name: "我的帳戶",
@@ -92,28 +64,30 @@ let accountOptData: AccountOptData[] = [
       {
         name: "AWS 主控台管理",
         link: "",
-        childs: []
+        childs: [],
       },
       {
         name: "帳單帳戶",
         link: "",
-        childs: []
+        childs: [],
       },
       {
         name: "帳單與成本管理",
         link: "",
-        childs: []
+        childs: [],
       },
-    ]
+    ],
   },
-].map((e, index) => {
+].map((e) => {
   return new AccountOptData(e.name, e.link, e.childs);
 });
 
 let accountOpts: AccountOption[] = reactive([]);
-accountOpts.push(...accountOptData.map((e, index) => {
-  return new AccountOption(e, index + "");
-}));
+accountOpts.push(
+  ...accountOptData.map((e, index) => {
+    return new AccountOption(e, index + "");
+  })
+);
 
 function onMouseEnter(opt: AccountOption) {
   opt.hover = true;
@@ -128,29 +102,40 @@ function onMouseLeave(opt: AccountOption) {
 }
 
 function getAccountOptZIndex() {
-  let totalZindex = 0
+  let totalZindex = 0;
   accountOpts.forEach((e) => {
     if (e.hover == true) {
       totalZindex += 1;
     }
-  })
+  });
   return totalZindex + 10;
 }
 </script>
 
-
 <template>
-  <template v-for="option in accountOpts" :key="option.id" class="flex-row">
-    <a :href="option.link" class="option pointer txt-no_" v-if="option.childs.length == 0">{{ option.name }}</a>
-    <span class="option txt-no_" v-if="option.childs.length != 0" @mouseenter="onMouseEnter(option)"
-      @mouseleave="onMouseLeave(option)">
+  <template v-for="option in accountOpts" :key="option.id">
+    <a
+      :href="option.link"
+      class="option pointer txt-no_"
+      v-if="option.childs.length == 0"
+      >{{ option.name }}</a
+    >
+    <span
+      class="option txt-no_"
+      v-if="option.childs.length != 0"
+      @mouseenter="onMouseEnter(option)"
+      @mouseleave="onMouseLeave(option)"
+    >
       <span class="pointer">{{ option.name }}</span>
-      <AccountOptionDropdown :hover="option.hover" :childs="option.childs" :zindex="option.zindex" />
+      <AccountOptionDropdown
+        :hover="option.hover"
+        :childs="option.childs"
+        :zindex="option.zindex"
+      />
     </span>
   </template>
   <span class="consoleBtn pointer">登入控制台</span>
 </template>
-
 
 <style scoped lang="scss">
 .consoleBtn {
@@ -160,20 +145,18 @@ function getAccountOptZIndex() {
   margin-left: 20px;
   padding: 5px 20px;
   border-radius: 40px;
-  &:hover{
+  &:hover {
     background-color: var(--aws-theme-color-active);
   }
-  
 }
 
-.option, a.option {
+.option,
+a.option {
   color: var(--aws-text);
   padding: 10px;
 
   &:hover {
     color: var(--aws-text-active);
-  }   
+  }
 }
-
-
 </style>

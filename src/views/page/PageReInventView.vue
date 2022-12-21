@@ -42,7 +42,7 @@ let cdata: CauoueslData[] = [
   <main class="widthLimit">
     <div class="carouselArea">
       <CarouselComponentVue :slots="cdata" indexpath="id">
-        <template v-for="item of cdata" v-slot:[item.id]>
+        <template v-for="item of cdata" v-slot:[item.id] :key="item.id">
           <div
             class="imageBackground"
             :style="{
