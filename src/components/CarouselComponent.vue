@@ -1,16 +1,21 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import gsap from "gsap";
 
 const prop = defineProps(["slots", "indexpath"]);
 
+let isCarouselReverse = false;
 let carouselIndex = ref(0);
 let intervalID = 0;
+let duration = 0.2;
+let clickCount = 0;
+
 const intervalTime = 8000;
 
 intervalID = window.setInterval(carouselStart, intervalTime);
 
 function onNavBtnClick(index: number) {
-  carouselIndex.value = index;
+  carouselIndexCalc(index - carouselIndex.value);
 }
 
 function onMouseEnter() {
@@ -26,13 +31,69 @@ function carouselStart() {
 }
 
 function onLeftClick() {
-  carouselIndexCalc(-1);
+  if (clickCount == 0) {
+    clickCount += 1;
+    onClick2Carousel(-1);
+  } else {
+    clickCount += 1;
+  }
 }
 function onRightClick() {
-  carouselIndexCalc(1);
+  if (clickCount == 0) {
+    clickCount += 1;
+    onClick2Carousel(1);
+  } else {
+    clickCount += 1;
+  }
+}
+
+function onClick2Carousel(num: number) {
+  carouselIndexCalc(num);
+  setTimeout(() => {
+    clickCount -= 1;
+    if (clickCount != 0) {
+      onClick2Carousel(num);
+    }
+  }, duration * 1000);
+}
+
+function onEnter(el: HTMLElement, done: gsap.Callback) {
+  if (!isCarouselReverse) {
+    gsap.fromTo(
+      el,
+      { transform: "translate(100%)" },
+      { transform: "translate(0)", duration: duration, onComplete: done }
+    );
+  } else {
+    gsap.fromTo(
+      el,
+      { transform: "translate(-100%)" },
+      { transform: "translate(0)", duration: duration, onComplete: done }
+    );
+  }
+}
+function onLeave(el: HTMLElement, done: gsap.Callback) {
+  if (!isCarouselReverse) {
+    gsap.fromTo(
+      el,
+      { transform: "translate(0%)" },
+      { transform: "translate(-100%)", duration: duration, onComplete: done }
+    );
+  } else {
+    gsap.fromTo(
+      el,
+      { transform: "translate(0%)" },
+      { transform: "translate(100%)", duration: duration, onComplete: done }
+    );
+  }
 }
 
 function carouselIndexCalc(addnum: number) {
+  if (addnum < 0) {
+    isCarouselReverse = true;
+  } else {
+    isCarouselReverse = false;
+  }
   if (
     carouselIndex.value + addnum < prop.slots.length &&
     carouselIndex.value + addnum >= 0
@@ -64,17 +125,20 @@ function carouselIndexCalc(addnum: number) {
     >
       <FAicon icon="fa-solid fa-chevron-right" />
     </div>
-    <TransitionGroup name="list" mode="out-in">
-      <div
-        class="w-screen absolute"
-        v-for="(slot, index) of prop.slots"
-        :key="index"
-        v-show="index == carouselIndex"
-      >
-        <slot :name="slot[prop.indexpath]"></slot>
-      </div>
-    </TransitionGroup>
-    <div class="flex-row gap-10px bottom-0 width-full mb-20px justify-center absolute">
+    <div
+      class="w-screen absolute"
+      v-for="(slot, index) of prop.slots"
+      :key="index"
+    >
+      <Transition :css="false" @enter="onEnter" @leave="onLeave">
+        <div v-show="index == carouselIndex">
+          <slot :name="slot[prop.indexpath]"></slot>
+        </div>
+      </Transition>
+    </div>
+    <div
+      class="text-txtWhite flex flex-row gap-10px bottom-0 w-full mb-20px justify-center absolute"
+    >
       <div v-for="(slot, index) of prop.slots" :key="slot">
         <FAicon
           class="cursor-pointer"

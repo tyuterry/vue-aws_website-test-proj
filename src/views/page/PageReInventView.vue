@@ -13,7 +13,7 @@ class CauoueslData {
 let cdata: CauoueslData[] = [
   {
     id: "ad1",
-    title: "聯網的最新功能",
+    title: "聯網的最新功能1111111",
     text: "了解新的創新項目，協助您建置、管理和保護網路",
     urlTitle: "瀏覽公告 »",
     url: "",
@@ -21,7 +21,7 @@ let cdata: CauoueslData[] = [
   },
   {
     id: "ad2",
-    title: "Amazon CodeCatalyst 簡介",
+    title: "Amazon CodeCatalyst 簡介222222",
     text: "可更快速地在AWS上建置及提交的統一軟體開發服務",
     urlTitle: "瀏覽公告 »",
     url: "",
@@ -29,12 +29,84 @@ let cdata: CauoueslData[] = [
   },
   {
     id: "ad3",
-    title: "AWS 應用程式編寫器 (預覽版)",
+    title: "AWS 應用程式編寫器 (預覽版)33333",
     text: "以視覽化方式快速設計和組建無伺服器應用程式。",
     urlTitle: "瀏覽公告 »",
     url: "",
     imgUrl: "/image/ReInvent/reinvent_carousel3.jpg",
   },
+  {
+    id: "ad4",
+    title: "聯網的最新功能44444444",
+    text: "了解新的創新項目，協助您建置、管理和保護網路",
+    urlTitle: "瀏覽公告 »",
+    url: "",
+    imgUrl: "/image/ReInvent/reinvent_carousel1.jpg",
+  },
+  {
+    id: "ad5",
+    title: "Amazon CodeCatalyst 簡介55555555",
+    text: "可更快速地在AWS上建置及提交的統一軟體開發服務",
+    urlTitle: "瀏覽公告 »",
+    url: "",
+    imgUrl: "/image/ReInvent/reinvent_carousel2.jpg",
+  },
+  {
+    id: "ad6",
+    title: "AWS 應用程式編寫器 (預覽版)6666666",
+    text: "以視覽化方式快速設計和組建無伺服器應用程式。",
+    urlTitle: "瀏覽公告 »",
+    url: "",
+    imgUrl: "/image/ReInvent/reinvent_carousel3.jpg",
+  },
+  {
+    id: "ad7",
+    title: "聯網的最新功能77777777",
+    text: "了解新的創新項目，協助您建置、管理和保護網路",
+    urlTitle: "瀏覽公告 »",
+    url: "",
+    imgUrl: "/image/ReInvent/reinvent_carousel1.jpg",
+  },
+  {
+    id: "ad8",
+    title: "Amazon CodeCatalyst 簡介8888888",
+    text: "可更快速地在AWS上建置及提交的統一軟體開發服務",
+    urlTitle: "瀏覽公告 »",
+    url: "",
+    imgUrl: "/image/ReInvent/reinvent_carousel2.jpg",
+  },
+  {
+    id: "ad9",
+    title: "AWS 應用程式編寫器 (預覽版)999999999",
+    text: "以視覽化方式快速設計和組建無伺服器應用程式。",
+    urlTitle: "瀏覽公告 »",
+    url: "",
+    imgUrl: "/image/ReInvent/reinvent_carousel3.jpg",
+  },
+  {
+    id: "adA",
+    title: "聯網的最新功能AAAAAAAAAAA",
+    text: "了解新的創新項目，協助您建置、管理和保護網路",
+    urlTitle: "瀏覽公告 »",
+    url: "",
+    imgUrl: "/image/ReInvent/reinvent_carousel1.jpg",
+  },
+  {
+    id: "adB",
+    title: "Amazon CodeCatalyst 簡介BBBBBBBBBB",
+    text: "可更快速地在AWS上建置及提交的統一軟體開發服務",
+    urlTitle: "瀏覽公告 »",
+    url: "",
+    imgUrl: "/image/ReInvent/reinvent_carousel2.jpg",
+  },
+  {
+    id: "adC",
+    title: "AWS 應用程式編寫器 (預覽版)CCCCCCCC",
+    text: "以視覽化方式快速設計和組建無伺服器應用程式。",
+    urlTitle: "瀏覽公告 »",
+    url: "",
+    imgUrl: "/image/ReInvent/reinvent_carousel3.jpg",
+  }
 ];
 </script>
 
