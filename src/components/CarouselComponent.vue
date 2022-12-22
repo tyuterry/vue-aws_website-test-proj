@@ -92,21 +92,4 @@ function carouselIndexCalc(addnum: number) {
   </div>
 </template>
 
-<style scoped lang="scss">
-
-
-
-.list-enter-active,
-.list-leave-active {
-  transition: opacity 1s ease, transform 1s ease;
-}
-
-.list-enter-from {
-  opacity: 0;
-  transform: translateX(100%);
-}
-.list-leave-to {
-  opacity: 0;
-  transform: translateX(-100%);
-}
-</style>
+<style scoped lang="scss"></style>

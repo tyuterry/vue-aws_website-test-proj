@@ -50,7 +50,7 @@ function closeNavItem() {
   <Transition name="down">
     <div
       v-show="isShow"
-      class="w-[90%] height-[calc(95vh-108px)] bg-bgDark self-center inline-block shadow-[0px_2px_5px_0px_rgba(0,0,0,0.5)] border-t-[1p_solid_#141a22]"
+      class="w-[90%] h-[calc(95vh-108px)] bg-bgDark self-center inline-block shadow-[0px_2px_5px_0px_rgba(0,0,0,0.5)] border-t-[1px] border-solid border-[#141a22]"
       @mouseenter="onMouseEnter()"
       @mouseleave="onMouseLeave()"
     >

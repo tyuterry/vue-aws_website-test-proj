@@ -1,1 +1,32 @@
-@import './base.scss';
+@import "./base.scss";
+
+
+/* Vue Trasition Basic Animation */
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.2s ease;
+}
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+
+/* Scrollbar */
+
+.noScroll {
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border: 4px solid transparent;
+  border-radius: 9px;
+  background-clip: content-box;
+
+  &:hover {
+    background: #7d7d7d;
+  }
+}

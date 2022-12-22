@@ -4,10 +4,13 @@ let prop = defineProps(["title", "text", "link"]);
 
 <template>
   <div class="pb-2px group cursor-pointer">
-    <a :href="prop.link" class="text-sm text-txtWhite decoration-0 group-hover:text-txtActive">
+    <a
+      :href="prop.link"
+      class="text-sm text-txtWhite decoration-0 group-hover:text-txtActive"
+    >
       {{ prop.title }}
     </a>
-    <div class="text-sm text-txtWhite decoration-0 ">
+    <div class="text-sm text-txtWhite decoration-0">
       {{ prop.text }}
     </div>
   </div>

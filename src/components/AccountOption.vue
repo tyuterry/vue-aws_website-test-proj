@@ -135,7 +135,7 @@ function getAccountOptZIndex() {
     </span>
   </template>
   <span
-    class="text-txtWhite bg-themeColor font-extrabold py-5px px-20px ml-20px rounded-40px cursor-pointer hover:bg-themeColorActive"
+    class="text-txtWhite bg-themeColor font-extrabold py-5px px-20px ml-20px rounded-[40px] cursor-pointer hover:bg-themeColorActive"
     >登入控制台</span
   >
 </template>

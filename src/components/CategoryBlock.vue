@@ -6,7 +6,7 @@ let prop = defineProps(["text", "childs"]);
 
 <template>
   <div class="mt-40px">
-    <div class="text-base">{{ prop.text }}</div>
+    <div class="text-base text-txtWhite">{{ prop.text }}</div>
     <hr />
     <div v-for="child of prop.childs" :key="child">
       <LinkTitleAndSummaryVue
@@ -18,5 +18,4 @@ let prop = defineProps(["text", "childs"]);
   </div>
 </template>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

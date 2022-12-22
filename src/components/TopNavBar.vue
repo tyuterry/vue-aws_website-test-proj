@@ -29,14 +29,16 @@ const navItemViews: Component[] = [NavReInventViewVue, NavProductViewVue];
 
 function onMouseEnter(index: number) {
   isNavTitleNowHover = true;
-  isNavTitleShow.value = true;
 
-  let navItemsKey = Object.keys(navItemViews);
-  if (navItemsKey.length > index) {
-    navItemTarget.value = index;
-  } else {
-    navItemTarget.value = 0;
-  }
+  setTimeout(() => {
+    isNavTitleShow.value = true;
+    let navItemsKey = Object.keys(navItemViews);
+    if (navItemsKey.length > index) {
+      navItemTarget.value = index;
+    } else {
+      navItemTarget.value = 0;
+    }
+  }, 200);
 }
 
 function onMouseLeave() {
@@ -65,11 +67,11 @@ function onShadowChange(value: boolean) {
             >
           </a>
         </div>
-        <div class="float-right m-[18px_10px_10px_10px]">
+        <div class="float-right m-[18px_10px_10px_10px] noScrollPadding">
           <AccountOption />
         </div>
       </div>
-      <div class="p-20px">
+      <div class="pt-20px">
         <template v-for="(title, index) of navTitle" :key="title">
           <span
             class="text-txtPaimary p-[0px_10px_22px_10px] hover:text-txtActive inline-block cursor-pointer"
@@ -92,15 +94,16 @@ function onShadowChange(value: boolean) {
   <Transition>
     <div
       v-if="isShadowShow"
-      class="w-full h-[100%] top-0 left-0 z-50 bg-white/[.7] absolute"
+      class="w-full h-full top-0 left-0 z-50 bg-white/[.7] absolute"
     ></div>
   </Transition>
 </template>
 
 <style scoped lang="scss">
-.noScroll .topNav .top-block {
-  padding: 0 calc(2rem + 15px) 0 2rem;
+.noScroll .noScrollPadding {
+  padding-right: 15px;
 }
+
 .p-r-15px {
   padding-right: 15px;
 }

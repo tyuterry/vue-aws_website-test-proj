@@ -39,25 +39,27 @@ let cdata: CauoueslData[] = [
 </script>
 
 <template>
-  <main class="widthLimit">
-    <div class="carouselArea">
+  <main class="overflow-hidden">
+    <div class="relative h-[600px]">
       <CarouselComponentVue :slots="cdata" indexpath="id">
         <template v-for="item of cdata" v-slot:[item.id] :key="item.id">
           <div
-            class="imageBackground"
+            class="h-[600px] w-full"
             :style="{
               background: 'no-repeat center/cover url(' + item.imgUrl + ')',
             }"
           >
-            <div class="carouselContent">
-              <div class="reInventImg"></div>
-              <div class="carouselTitle">
+            <div class="top-[100px] left-[200px] w-fit">
+              <div class="h-45px w-[300px] mb-40px reInventImg"></div>
+              <div class="text-txtWhite font-[800] text-[48px]">
                 {{ item.title }}
               </div>
-              <div class="carouselContext">
+              <div class="text-txtWhite text-xl">
                 {{ item.text }}
               </div>
-              <div class="carouselTextUrl">
+              <div
+                class="my-30px mx-0 text-txtWhite text-basd border border-solid border-[#d5dbdb] w-fit rounded-[20px] p-10px"
+              >
                 {{ item.urlTitle }}
               </div>
             </div>

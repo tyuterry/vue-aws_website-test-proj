@@ -607,18 +607,18 @@ function onMouseEnter(index: number) {
 </script>
 
 <template>
-  <div class="flex flex-row my-0 mx-50px h-[100%]">
-    <div class="basis-1/5">
+  <div class="flex flex-row my-0 mx-50px h-full">
+    <div class="basis-1/5 py-30px overflow-auto">
       <div
         v-for="(data, index) of navItemData"
         :key="data.text"
-        class="text-txtPaimary p-y-3px hover:text-txtActive cursor-pointer"
+        class="text-txtPaimary py-3px hover:text-txtActive cursor-pointer"
         @mouseenter="onMouseEnter(index)"
       >
         {{ data.text }}
       </div>
     </div>
-    <div class="p-y-30px p-x-20px overflow-auto category basis-2/5">
+    <div class="py-30px px-20px overflow-auto category basis-2/5">
       <LinkTitleVue
         class="pb-20px"
         :title="navItemData[categoryIndex].text"
@@ -633,7 +633,9 @@ function onMouseEnter(index: number) {
         :link="child.link"
       />
     </div>
-    <div class="basis-2/5 p-y-30px p-x-20px text-txtWhite overflow-auto flex flex-col">
+    <div
+      class="basis-2/5 py-30px px-20px text-txtWhite overflow-auto flex flex-col"
+    >
       <div
         v-for="resource of navItemData[categoryIndex].resources"
         :key="resource.title"
@@ -654,37 +656,4 @@ function onMouseEnter(index: number) {
   </div>
 </template>
 
-<style scoped lang="scss">
-.productContent {
-  // margin: 0px 50px;
-  // height: 100%;
-}
-// .category {
-//   padding: 30px 0;
-//   overflow: auto;
-//   .item {
-//     color: var(--aws-text);
-//     padding: 3px 0;
-//     &:hover {
-//       color: var(--aws-text-active);
-//     }
-//   }
-// }
-
-// .productList {
-//   padding: 30px 20px;
-//   overflow: auto;
-//   .padding {
-//     padding-bottom: 10px;
-//   }
-// }
-
-// .media-resource {
-//   padding: 30px 20px;
-//   overflow: auto;
-//   .mediaContent {
-//     margin: 5px;
-//     flex: 1 0 47%;
-//   }
-// }
-</style>
+<style scoped lang="scss"></style>

@@ -8,9 +8,10 @@ let prop = defineProps(["title", "text"]);
   >
     <div class="py-5px px-15px text-sm text-txtWhite">{{ prop.title }}</div>
     <hr style="margin: 0 10px" />
-    <div class="py-5px px-15px text-sm text-txtWhite hover:text-txtActive">{{ prop.text }}</div>
+    <div class="py-5px px-15px text-sm text-txtWhite hover:text-txtActive">
+      {{ prop.text }}
+    </div>
   </div>
 </template>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>
