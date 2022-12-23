@@ -1,5 +1,9 @@
 <script setup lang="ts">
-let prop = defineProps(["title", "text", "link"]);
+let prop = defineProps({
+  title: String,
+  text: String,
+  link: String,
+});
 </script>
 
 <template>
@@ -10,7 +14,7 @@ let prop = defineProps(["title", "text", "link"]);
     >
       {{ prop.title }}
     </a>
-    <div class="text-sm text-txtWhite decoration-0">
+    <div class="text-sm text-txtGray decoration-0">
       {{ prop.text }}
     </div>
   </div>

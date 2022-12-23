@@ -1,14 +1,12 @@
 <script setup lang="ts">
+import type { AccountOption } from "@/models/AccountOption.model";
 import { ref, type Ref, watch } from "vue";
 
-const prop = defineProps(
-  // {
-  //   "hover": Boolean,
-  //   "childs": AccountOption,
-  //   "zindex" : Number,
-  // }
-  ["hover", "childs", "zindex"]
-);
+const prop = defineProps({
+  hover: Boolean,
+  childs: Array<AccountOption>,
+  zindex: Number,
+});
 let isNowHover: boolean = false;
 let isShow: Ref<boolean> = ref(false);
 
@@ -59,10 +57,10 @@ function closeDropdown() {
       />
       <div
         v-for="child of prop.childs"
-        :key="child"
+        :key="child.id"
         class="p-5px whitespace-nowrap text-txtDark font-sm cursor-pointer decoration-0 hover:text-txtActive"
       >
-        <a :href="child.href">{{ child.name }}</a>
+        <a :href="child.link">{{ child.name }}</a>
       </div>
     </div>
   </div>

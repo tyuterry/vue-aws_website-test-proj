@@ -1,10 +1,10 @@
-import type { ResourcesWithTitleLink } from "./NavResources.model";
-import type { TitleLink } from "./TitleLink.model";
+import type { ResourcesWithTitleLink } from "./ResourcesWithTitleLink.model";
+import type { SummaryWithTitleLink } from "./SummaryWithTitleLink.model";
 
 export interface NavItem {
   text: string;
   link: string;
-  childs: TitleLink[];
+  childs: SummaryWithTitleLink[];
   resources: ResourcesWithTitleLink[];
 }
 
