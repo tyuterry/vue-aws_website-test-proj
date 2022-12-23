@@ -1,4 +1,4 @@
-import type { ResourcesWithTitleLink } from "./NavResources.model";
+import type { ResourcesWithTitleLink } from "./ResourcesWithTitleLink.model";
 
 export interface Bulletin {
   text: string;

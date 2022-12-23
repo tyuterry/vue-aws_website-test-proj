@@ -3,7 +3,7 @@ import { AccountOptData } from "./AccountOptionData.model";
 export interface AccountOption extends AccountOptData {
   id: string;
   hover: boolean;
-  zindex: Number;
+  zindex: number;
   childs: AccountOption[];
 }
 

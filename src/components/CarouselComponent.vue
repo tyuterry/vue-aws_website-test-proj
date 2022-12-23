@@ -1,8 +1,18 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import gsap from "gsap";
+import type { Carousel } from "@/models/Carousel.model";
 
-const prop = defineProps(["slots", "indexpath"]);
+const prop = defineProps({
+  slots: {
+    type: Array<Carousel>,
+    default: [],
+  },
+  indexpath: {
+    type: String,
+    default: "",
+  },
+});
 
 let isCarouselReverse = false;
 let carouselIndex = ref(0);
@@ -139,7 +149,7 @@ function carouselIndexCalc(addnum: number) {
     <div
       class="text-txtWhite flex flex-row gap-10px bottom-0 w-full mb-20px justify-center absolute"
     >
-      <div v-for="(slot, index) of prop.slots" :key="slot">
+      <div v-for="(slot, index) of prop.slots" :key="slot.id">
         <FAicon
           class="cursor-pointer"
           v-show="index == carouselIndex"

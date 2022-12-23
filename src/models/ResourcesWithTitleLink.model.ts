@@ -1,8 +1,9 @@
-import type { TitleLink } from "./TitleLink.model";
+import type { SummaryWithTitleLink } from "./SummaryWithTitleLink.model";
 
 export interface ResourcesWithTitleLink {
   title: string;
-  childs: TitleLink[];
+  childs: SummaryWithTitleLink[];
+  imgUrl?: string;
 }
 export class ResourcesWithTitleLink {
   constructor() {

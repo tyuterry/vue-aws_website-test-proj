@@ -1,5 +1,8 @@
 <script setup lang="ts">
-let prop = defineProps(["title", "text"]);
+let prop = defineProps({
+  title: String,
+  text: String,
+});
 </script>
 
 <template>

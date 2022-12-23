@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { ref, watch, type Ref } from "vue";
 
-const prop = defineProps(["hover"]);
+const prop = defineProps({
+  hover: Boolean,
+});
 const emit = defineEmits<{
   (e: "showChange", value: boolean): void;
 }>();

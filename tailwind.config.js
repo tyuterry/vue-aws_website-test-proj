@@ -28,6 +28,7 @@ module.exports = {
         txtActive: "#f8991d",
         txtHighlight: "#0972d3",
         txtHighlightActive: "#033160",
+        txtGray: "#b5b5b5",
         bgDark: "#232f3e",
         bgWhite: "#ffffff",
         bgLight: "#f1f4f6",

@@ -1,9 +1,9 @@
 import type { Bulletin } from "./Bulletin.model";
-import type { SubLink } from "./SubLink.model";
+import type { TitleLink } from "./TitleLink.model";
 
 export interface NavReInventViewData {
   title: string;
-  sublink: SubLink[];
+  sublink: TitleLink[];
   bulletins: Bulletin[];
 }
 
