@@ -1,4 +1,4 @@
-import { CarouselData } from "./CarouselData.mode";
+import { CarouselData } from "./CarouselData.model";
 
 export interface Carousel {
   [id: string]: string;

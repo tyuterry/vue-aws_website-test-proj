@@ -29,16 +29,17 @@ const navItemViews: Component[] = [NavReInventViewVue, NavProductViewVue];
 
 function onMouseEnter(index: number) {
   isNavTitleNowHover = true;
-
   setTimeout(() => {
-    isNavTitleShow.value = true;
-    let navItemsKey = Object.keys(navItemViews);
-    if (navItemsKey.length > index) {
-      navItemTarget.value = index;
-    } else {
-      navItemTarget.value = 0;
+    if (isNavTitleNowHover == true) {
+      isNavTitleShow.value = true;
+      let navItemsKey = Object.keys(navItemViews);
+      if (navItemsKey.length > index) {
+        navItemTarget.value = index;
+      } else {
+        navItemTarget.value = 0;
+      }
     }
-  }, 200);
+  }, 300);
 }
 
 function onMouseLeave() {
