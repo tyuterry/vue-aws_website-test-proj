@@ -14,8 +14,12 @@ import {
   faChevronRight,
   faChevronLeft,
   faCircle,
+  faPodcast,
+  faEnvelope
 } from "@fortawesome/free-solid-svg-icons";
+
 import { faCircle as faCircleR } from "@fortawesome/free-regular-svg-icons";
+import { faFacebookF, faTwitter, faTwitch, faYoutube } from "@fortawesome/free-brands-svg-icons";
 
 import "./assets/main.scss";
 
@@ -25,7 +29,13 @@ library.add(
   faChevronRight,
   faChevronLeft,
   faCircle,
-  faCircleR
+  faCircleR,
+  faPodcast,
+  faEnvelope,
+  faFacebookF,
+  faTwitter,
+  faTwitch,
+  faYoutube
 );
 
 const app = createApp(App);
