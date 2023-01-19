@@ -22,6 +22,8 @@
   
   autoprefixer  //Utitly Css
 
+  miragejs // mock server
+
 
   # TailWindcss Warn
   vs code setting 

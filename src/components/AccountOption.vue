@@ -1,93 +1,24 @@
 <script setup lang="ts">
 import { AccountOption } from "@/models/AccountOption.model";
 import { AccountOptData } from "@/models/AccountOptionData.model";
-import { reactive } from "vue";
+import { reactive, ref, type Ref } from "vue";
 import AccountOptionDropdown from "./AccountOptionDropdown.vue";
 
-let accountOptData: AccountOptData[] = [
-  {
-    name: "聯絡我們",
-    link: "",
-    childs: [],
-  },
-  {
-    name: "支援",
-    link: "",
-    childs: [
-      {
-        name: "支援中心",
-        link: "",
-        childs: [],
-      },
-      {
-        name: "知識中心",
-        link: "",
-        childs: [],
-      },
-      {
-        name: "AWS Support 概觀",
-        link: "",
-        childs: [],
-      },
-      {
-        name: "AWS re:Post",
-        link: "",
-        childs: [],
-      },
-    ],
-  },
-  {
-    name: "中文(繁體)",
-    link: "",
-    childs: [
-      {
-        name: "English",
-        link: "",
-        childs: [],
-      },
-      {
-        name: "中文(繁體)",
-        link: "",
-        childs: [],
-      },
-      {
-        name: "中文 (简体)",
-        link: "",
-        childs: [],
-      },
-    ],
-  },
-  {
-    name: "我的帳戶",
-    link: "",
-    childs: [
-      {
-        name: "AWS 主控台管理",
-        link: "",
-        childs: [],
-      },
-      {
-        name: "帳單帳戶",
-        link: "",
-        childs: [],
-      },
-      {
-        name: "帳單與成本管理",
-        link: "",
-        childs: [],
-      },
-    ],
-  },
-].map((e) => {
-  return new AccountOptData(e.name, e.link, e.childs);
-});
-
+let accountOptData: Ref<AccountOptData[]> = ref([]);
 let accountOpts: AccountOption[] = reactive([]);
-accountOpts.push(
-  ...accountOptData.map((e, index) => {
-    return new AccountOption(e, index + "");
-  })
-);
+
+fetch("/api/accountOptData")
+  .then((res) => res.json())
+  .then((json) => {
+    accountOptData.value = json.map((e: any) => {
+      return new AccountOptData(e.name, e.link, e.childs);
+    });
+    accountOpts.push(
+      ...accountOptData.value.map((e, index) => {
+        return new AccountOption(e, index + "");
+      })
+    );
+  });
 
 function onMouseEnter(opt: AccountOption) {
   opt.hover = true;
@@ -134,10 +65,12 @@ function getAccountOptZIndex() {
       />
     </span>
   </template>
-  <span
-    class="text-txtWhite bg-themeColor font-extrabold py-5px px-20px ml-20px rounded-[40px] cursor-pointer hover:bg-themeColorActive"
-    >登入控制台</span
-  >
+  <router-link to="/console">
+    <span
+      class="text-txtWhite bg-themeColor font-extrabold py-5px px-20px ml-20px rounded-[40px] cursor-pointer hover:bg-themeColorActive"
+      >登入控制台</span
+    >
+  </router-link>
 </template>
 
 <style scoped lang="scss"></style>

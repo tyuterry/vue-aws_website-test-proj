@@ -6,19 +6,13 @@ import NavItem from "./NavItem.vue";
 import NavReInventViewVue from "@/views/nav/NavReInventView.vue";
 import NavProductViewVue from "@/views/nav/NavProductView.vue";
 
-let navTitle: string[] = [
-  "re:Invent",
-  "產品",
-  "解決方案",
-  "定價",
-  "文件",
-  "了解",
-  "合作夥伴",
-  "AWS Marketplace",
-  "客戶支援",
-  "事件",
-  "進一步探索",
-];
+let navTitle: Ref<{ name: string }[]> = ref([]);
+
+fetch("/api/navTitle")
+  .then((res) => res.json())
+  .then((json) => {
+    navTitle.value = json;
+  });
 
 let isNavTitleNowHover: boolean = false;
 let isNavTitleShow: Ref<boolean> = ref(false);
@@ -79,7 +73,7 @@ function onShadowChange(value: boolean) {
             @mouseenter="onMouseEnter(index)"
             @mouseleave="onMouseLeave()"
           >
-            {{ title }}
+            {{ title?.name }}
           </span>
         </template>
       </div>

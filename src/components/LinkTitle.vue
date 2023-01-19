@@ -10,8 +10,10 @@ let prop = defineProps({
     <a
       :href="prop.link"
       class="text-txtPaimary decoration-0 hover:text-txtActive"
-      >{{ prop.title }}</a
     >
+      {{ prop.title }}
+      <slot></slot>
+    </a>
   </div>
 </template>
 

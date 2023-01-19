@@ -79,7 +79,7 @@ function onCatergoryScrollBtnClick(type: "left" | "right") {
   </div>
   <div>
     <SectionContnetBlock
-      :childs="props.datas[categoryIndex].childs"
+      :childs="props.datas[categoryIndex]?.childs"
     ></SectionContnetBlock>
   </div>
 </template>

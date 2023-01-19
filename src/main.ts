@@ -2,6 +2,7 @@ import { createApp } from "vue";
 import App from "@/App.vue";
 import router from "./router";
 
+
 //preview plugin
 import Previewer from "virtual:vue-component-preview";
 
@@ -15,12 +16,23 @@ import {
   faChevronLeft,
   faCircle,
   faPodcast,
-  faEnvelope
+  faEnvelope,
+  faArrowUpRightFromSquare,
 } from "@fortawesome/free-solid-svg-icons";
 
-import { faCircle as faCircleR } from "@fortawesome/free-regular-svg-icons";
-import { faFacebookF, faTwitter, faTwitch, faYoutube } from "@fortawesome/free-brands-svg-icons";
+import {
+  faCircle as faCircleR,
+  faBell as faBellR,
+  faCircleQuestion as faCircleQuestionR,
+} from "@fortawesome/free-regular-svg-icons";
+import {
+  faFacebookF,
+  faTwitter,
+  faTwitch,
+  faYoutube,
+} from "@fortawesome/free-brands-svg-icons";
 
+import vueClickOutsideElement from "vue-click-outside-element";
 import "./assets/main.scss";
 
 library.add(
@@ -35,13 +47,18 @@ library.add(
   faFacebookF,
   faTwitter,
   faTwitch,
-  faYoutube
+  faYoutube,
+  faBellR,
+  faCircleQuestionR,
+  faArrowUpRightFromSquare
 );
+
 
 const app = createApp(App);
 
 app.use(router);
 app.use(Previewer);
+app.use(vueClickOutsideElement);
 app.component("FAicon", FontAwesomeIcon);
 
 app.mount("#app");

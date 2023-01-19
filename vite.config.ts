@@ -9,6 +9,13 @@ import Preview from "vite-plugin-vue-component-preview";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue(), vueJsx(), Preview() as Plugin],
+  build: {
+    rollupOptions: {
+      input: {
+        main: "index.build.html",
+      },
+    },
+  },
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
