@@ -3,6 +3,8 @@ import { ref, type Ref } from "vue";
 import ConsoleAccountOptionDropdownVue from "./ConsoleAccountOptionDropdown.vue";
 import LinkItemAndContentVue from "./LinkItemAndContent.vue";
 import LinkTitleVue from "./LinkTitle.vue";
+import NavConsoleViewVue from "../views/nav/NavConsoleView.vue";
+import GolbalSearchInputVue from "./GolbalSearchInput.vue";
 
 let consoleNotices: Ref<{ label: string; data: string }[]> = ref([]);
 let consoleSupport: { title: string; icon: boolean; divide: boolean }[] = [
@@ -26,6 +28,7 @@ let consoleAccount: { label: string; divide: false }[] = [
 ];
 
 let nowOption: Ref<string> = ref("");
+let nowService: Ref<string> = ref("");
 
 fetch("/api/consoleNotice")
   .then((res) => res.json())
@@ -43,34 +46,65 @@ function onOptionClick(optionName: string) {
   nowOption.value = optionName;
   console.log(optionName);
 }
-
-function onClickOutSide() {
+function onServiceClick(serviceName: string) {
+  nowService.value = serviceName;
+  console.log(serviceName);
+}
+function onClickServiceOutSide() {
+  nowService.value = "";
+}
+function onClickAccountOptionOutSide() {
   nowOption.value = "";
+}
+function onServiceDropdownClose() {
+  nowService.value = "";
 }
 </script>
 
 <template>
   <div class="flex flex-row w-full bg-bgDark">
     <RouterLink to="/console" class="flex-grow-0">
-      <div
-        class="px-[16px] py-[9px] w-fit border border-[1px] border-transparent"
-      >
+      <div class="px-[16px] py-[9px] w-fit border border-transparent">
         <div class="consoleLogo h-[20px] w-[33px]"></div>
       </div>
     </RouterLink>
+
+    <div class="divide" />
+
     <div
-      class="flex-grow-0 flex flex-row justify-center items-center gap-10px px-[16px] py-[9px] w-fit border border-[1px] border-transparent"
+      class="flex-grow-0 flex flex-row justify-center items-center w-fit border border-transparent"
+      v-click-outside-element="onClickServiceOutSide"
     >
-      <div class="menuIcon h-[16px] w-[16px] text-white"></div>
-      <div class="text-[10px] text-white">服務</div>
+      <ConsoleAccountOptionDropdownVue
+        class="self-center h-5px mt-auto"
+        :open="nowService == 'service'"
+        :right="false"
+        :closeIcon="true"
+        @onClose="onServiceDropdownClose()"
+      >
+        <div class="w-[1000px] max-w-[80vw] bg-bgDark h-[90vh]">
+          <NavConsoleViewVue> </NavConsoleViewVue>
+        </div>
+      </ConsoleAccountOptionDropdownVue>
+      <div
+        @click="onServiceClick('service')"
+        class="flex flex-row gap-10px px-[16px] py-[9px] cursor-pointer"
+      >
+        <div class="menuIcon h-[16px] w-[16px] text-white"></div>
+        <div class="text-[10px] text-white">服務</div>
+      </div>
     </div>
-    <div class="flex-auto">搜尋區域</div>
+
+    <div class="flex-auto">
+      <GolbalSearchInputVue></GolbalSearchInputVue>
+    </div>
+
     <div
       class="flex-grow-0 flex flex-row items-center"
-      v-click-outside-element="onClickOutSide"
+      v-click-outside-element="onClickAccountOptionOutSide"
     >
       <div
-        class="mx-10px h-full flex items-center cursor-pointer hover:text-themeColorActive"
+        class="mx-15px h-full flex items-center cursor-pointer hover:text-themeColorActive"
         @click="onOptionClick('bell')"
       >
         <FAicon icon="fa-regular fa-bell" />
@@ -94,8 +128,9 @@ function onClickOutSide() {
         </div>
       </ConsoleAccountOptionDropdownVue>
 
+      <div class="divide self-stretch" />
       <div
-        class="mx-10px h-full flex items-center cursor-pointer hover:text-themeColorActive"
+        class="mx-15px h-full flex items-center cursor-pointer hover:text-themeColorActive"
         @click="onOptionClick('question')"
       >
         <FAicon icon="fa-regular fa-circle-question" />
@@ -105,7 +140,7 @@ function onClickOutSide() {
         :open="nowOption == 'question'"
       >
         <div class="w-[200px] bg-bgDark">
-          <container v-for="support of consoleSupport" :key="support.title">
+          <template v-for="support of consoleSupport" :key="support.title">
             <LinkTitleVue
               class="my-10px px-15px cursor-pointer"
               :title="support.title"
@@ -116,12 +151,13 @@ function onClickOutSide() {
               />
             </LinkTitleVue>
             <div v-if="support.divide" class="bg-[#414750] w-full h-[1px]" />
-          </container>
+          </template>
         </div>
       </ConsoleAccountOptionDropdownVue>
 
+      <div class="divide self-stretch" />
       <div
-        class="mx-10px h-full flex items-center cursor-pointer hover:text-themeColorActive"
+        class="mx-15px h-full flex items-center cursor-pointer hover:text-themeColorActive"
         @click="onOptionClick('local')"
       >
         <span>地區</span>
@@ -148,8 +184,9 @@ function onClickOutSide() {
         </div>
       </ConsoleAccountOptionDropdownVue>
 
+      <div class="divide self-stretch" />
       <div
-        class="mx-10px h-full flex items-center cursor-pointer hover:text-themeColorActive"
+        class="mx-15px h-full flex items-center cursor-pointer hover:text-themeColorActive"
         @click="onOptionClick('account')"
       >
         <span>Name</span>
@@ -182,5 +219,11 @@ function onClickOutSide() {
 .menuIcon {
   background: transparent url("../assets/image/Nav/menu_icon.svg") no-repeat
     scroll 0 0;
+}
+
+.divide {
+  width: 2px;
+  margin: 8px 0 8px 0;
+  background-color: #414750;
 }
 </style>

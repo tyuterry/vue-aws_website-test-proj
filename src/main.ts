@@ -2,7 +2,6 @@ import { createApp } from "vue";
 import App from "@/App.vue";
 import router from "./router";
 
-
 //preview plugin
 import Previewer from "virtual:vue-component-preview";
 
@@ -18,12 +17,17 @@ import {
   faPodcast,
   faEnvelope,
   faArrowUpRightFromSquare,
+  faMagnifyingGlass,
+  faCube,
+  faFileInvoice
 } from "@fortawesome/free-solid-svg-icons";
 
 import {
   faCircle as faCircleR,
   faBell as faBellR,
   faCircleQuestion as faCircleQuestionR,
+  faStar as faStarR,
+  faPaperPlane as faPaperPlaneR,
 } from "@fortawesome/free-regular-svg-icons";
 import {
   faFacebookF,
@@ -34,6 +38,7 @@ import {
 
 import vueClickOutsideElement from "vue-click-outside-element";
 import "./assets/main.scss";
+import PortalVue from 'portal-vue';
 
 library.add(
   faCaretDown,
@@ -50,15 +55,20 @@ library.add(
   faYoutube,
   faBellR,
   faCircleQuestionR,
-  faArrowUpRightFromSquare
+  faArrowUpRightFromSquare,
+  faMagnifyingGlass,
+  faCube,
+  faStarR,
+  faFileInvoice,
+  faPaperPlaneR
 );
-
 
 const app = createApp(App);
 
 app.use(router);
 app.use(Previewer);
 app.use(vueClickOutsideElement);
+app.use(PortalVue);
 app.component("FAicon", FontAwesomeIcon);
 
 app.mount("#app");

@@ -1416,15 +1416,15 @@ const server: Server = createServer({
       consoleNotice: [
         {
           label: "未決的問題",
-          data: 0,
+          data: "0",
         },
         {
           label: "排定的變更",
-          data: 0,
+          data: "0",
         },
         {
           label: "其他通知",
-          data: 0,
+          data: "0",
         },
       ],
       consoleLocation: [
@@ -1533,6 +1533,290 @@ const server: Server = createServer({
           code: "me-central-1",
         },
       ],
+      consoleServceData: [
+        {
+          text: "AWS 成本管理",
+          link: "",
+          icon: "fa-soild fa-file-invoice",
+          childs: [
+            {
+              title: "AWS Application Cost Profiler",
+              text: "每個租用戶和工作負載的成本",
+              link: "",
+            },
+            {
+              title: "AWS Billing Conductor",
+              text: "簡化帳單實務",
+              link: "",
+            },
+            {
+              title: "AWS Budgets",
+              text: "設定自訂預算並接收警示提醒",
+              link: "",
+            },
+            {
+              title: "AWS Cost Explorer",
+              text: "視覺化並探索您的 AWS 成本與用量",
+              link: "",
+            },
+            {
+              title: "AWS Marketplace Subscriptions",
+              text: "您可以找到、購買和部署軟體的數位目錄",
+              link: "",
+            },
+          ],
+        },
+        {
+          text: "Machine Learning",
+          link: "",
+          childs: [
+            {
+              title: "Amazon Augmented AI",
+              text: "輕鬆實作機器學習預測的人工審查",
+              link: "",
+            },
+            {
+              title: "Amazon CodeGuru",
+              text: "建置和執行現代應用程式的智慧建議",
+              link: "",
+            },
+            {
+              title: "Amazon Comprehend",
+              text: "分析非結構化文字",
+              link: "",
+            },
+            {
+              title: "Amazon Comprehend Medical",
+              text: "Amazon Comprehend Medical 使用機器學習從醫療文字擷取洞見和關係。",
+              link: "",
+            },
+            {
+              title: "AWS DeepComposer",
+              text: "透過 AWS DeepComposer，不同技能等級的開發人員都能開始使用 Generative AI。",
+              link: "",
+            },
+            {
+              title: "AWS DeepLens",
+              text: "具備深度學習功能的攝影機",
+              link: "",
+            },
+            {
+              title: "AWS DeepRacer",
+              text: "全自動 1/18th 比例賽車，由機器學習驅動",
+              link: "",
+            },
+            {
+              title: "Amazon DevOps Guru",
+              text: "採用 ML 技術的雲端作業服務，提升應用程式可用性。",
+              link: "",
+            },
+            {
+              title: "Amazon Forecast",
+              text: "Amazon Forecast 是一種可進行準確時間序列預測的全受管服務",
+              link: "",
+            },
+            {
+              title: "Amazon Fraud Detector",
+              text: "使用機器學習加速偵測更多線上詐騙",
+              link: "",
+            },
+            {
+              title: "Amazon HealthLake",
+              text: "了解運作狀態資料",
+              link: "",
+            },
+            {
+              title: "Amazon Kendra",
+              text: "透過機器學習獲得高度準確的企業搜尋服務能力",
+              link: "",
+            },
+            {
+              title: "Amazon Lex",
+              text: "建置語音與文字聊天機器人",
+              link: "",
+            },
+            {
+              title: "Amazon Lookout for Equipment",
+              text: "分析感應器資料，偵測設備異常行為",
+              link: "",
+            },
+            {
+              title: "Amazon Lookout for Metrics",
+              text: "自動偵測指標中的異常並識別其根本原因",
+              link: "",
+            },
+            {
+              title: "Amazon Lookout for Vision",
+              text: "使用電腦視覺來自動化品質檢測，藉此找出瑕疵。",
+              link: "",
+            },
+            {
+              title: "Amazon Monitron",
+              text: "用於設備監控的端對端系統",
+              link: "",
+            },
+            {
+              title: "Amazon Omics",
+              text: "將組學資料轉換為洞見。",
+              link: "",
+            },
+            {
+              title: "AWS Panorama",
+              text: "在邊緣啟用電腦視覺應用程式",
+              link: "",
+            },
+            {
+              title: "Amazon Personalize",
+              text: "Amazon Personalize 協助您在應用程式中輕鬆新增即時推薦",
+              link: "",
+            },
+            {
+              title: "Amazon Polly",
+              text: "將文字轉成接近真實語音",
+              link: "",
+            },
+            {
+              title: "Amazon Rekognition",
+              text: "搜尋和分析影像",
+              link: "",
+            },
+            {
+              title: "Amazon SageMaker",
+              text: "建立、訓練和部署機器學習模型",
+              link: "",
+            },
+            {
+              title: "Amazon Textract",
+              text: "幾乎可從任何文件輕鬆擷取文字和資料",
+              link: "",
+            },
+            {
+              title: "Amazon Transcribe",
+              text: "強大的語音辨識",
+              link: "",
+            },
+            {
+              title: "Amazon Translate",
+              text: "強大的神經機器翻譯",
+              link: "",
+            },],
+        },
+        {
+          text: "Quantum Technologies",
+          link: "",
+          childs: [],
+        },
+        {
+          text: "儲存",
+          link: "",
+          childs: [],
+        },
+        {
+          text: "分析",
+          link: "",
+          childs: [],
+        },
+        {
+          text: "區塊鏈",
+          link: "",
+          childs: [],
+        },
+        {
+          text: "商業應用程式",
+          link: "",
+          childs: [],
+        },
+        {
+          text: "媒體服務",
+          link: "",
+          childs: [],
+        },
+        {
+          text: "安全性、身分與合規",
+          link: "",
+          childs: [],
+        },
+        {
+          text: "客戶支援",
+          link: "",
+          childs: [],
+        },
+        {
+          text: "容器",
+          link: "",
+          childs: [],
+        },
+        {
+          text: "應用程式整合",
+          link: "",
+          childs: [],
+        },
+        {
+          text: "擴增實境與虛擬實境",
+          link: "",
+          childs: [],
+        },
+        {
+          text: "最終使用者運算",
+          link: "",
+          childs: [],
+        },
+        {
+          text: "機器人",
+          link: "",
+          childs: [],
+        },
+        {
+          text: "物聯網",
+          link: "",
+          childs: [],
+        },
+        {
+          text: "移轉與傳輸",
+          link: "",
+          childs: [],
+        },
+        {
+          text: "管理與管控",
+          link: "",
+          childs: [],
+        },
+        {
+          text: "聯網與內容交付",
+          link: "",
+          childs: [],
+        },
+        {
+          text: "行動應用程式",
+          link: "",
+          childs: [],
+        },
+        {
+          text: "衛星",
+          link: "",
+          childs: [],
+        },
+        {
+          text: "資料庫",
+          link: "",
+          childs: [],
+        },
+        {
+          text: "遊戲開發",
+          link: "",
+          childs: [],
+        },
+        {
+          text: "運算",
+          link: "",
+          childs: [],
+        },
+        {
+          text: "開發人員工具",
+          link: "",
+          childs: [],
+        },
+      ]
     });
   },
 

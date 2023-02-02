@@ -6,6 +6,7 @@ export interface NavItem {
   link: string;
   childs: SummaryWithTitleLink[];
   resources: ResourcesWithTitleLink[];
+  icon?: string;
 }
 
 export class NavItem {
