@@ -19,7 +19,8 @@ import {
   faArrowUpRightFromSquare,
   faMagnifyingGlass,
   faCube,
-  faFileInvoice
+  faFileInvoice,
+  faEllipsisVertical,
 } from "@fortawesome/free-solid-svg-icons";
 
 import {
@@ -38,7 +39,7 @@ import {
 
 import vueClickOutsideElement from "vue-click-outside-element";
 import "./assets/main.scss";
-import PortalVue from 'portal-vue';
+import PortalVue from "portal-vue";
 
 library.add(
   faCaretDown,
@@ -60,7 +61,8 @@ library.add(
   faCube,
   faStarR,
   faFileInvoice,
-  faPaperPlaneR
+  faPaperPlaneR,
+  faEllipsisVertical
 );
 
 const app = createApp(App);

@@ -1,15 +1,17 @@
 export interface ConsoleData {
   id: string;
-  styleClass?: string;
+  title: string;
+  colSpan?: number;
+  type: string;
   data: {
     content: any;
     option?: any;
   };
-  type: string;
 }
 export class ConsoleData {
   constructor() {
     this.id = "";
+    this.title = "";
     this.data = {
       content: "",
     };

@@ -3,7 +3,7 @@ import { ref } from "vue";
 import gsap from "gsap";
 import type { Carousel } from "@/models/Carousel.model";
 
-const prop = defineProps({
+const props = defineProps({
   slots: {
     type: Array<Carousel>,
     default: [],
@@ -105,14 +105,14 @@ function carouselIndexCalc(addnum: number) {
     isCarouselReverse = false;
   }
   if (
-    carouselIndex.value + addnum < prop.slots.length &&
+    carouselIndex.value + addnum < props.slots.length &&
     carouselIndex.value + addnum >= 0
   ) {
     carouselIndex.value = carouselIndex.value + addnum;
-  } else if (carouselIndex.value + addnum >= prop.slots.length) {
+  } else if (carouselIndex.value + addnum >= props.slots.length) {
     carouselIndex.value = 0;
   } else if (carouselIndex.value + addnum < 0) {
-    carouselIndex.value = prop.slots.length - 1;
+    carouselIndex.value = props.slots.length - 1;
   }
 }
 </script>
@@ -137,19 +137,19 @@ function carouselIndexCalc(addnum: number) {
     </div>
     <div
       class="w-screen absolute"
-      v-for="(slot, index) of prop.slots"
+      v-for="(slot, index) of props.slots"
       :key="index"
     >
       <Transition :css="false" @enter="onEnter" @leave="onLeave">
         <div v-show="index == carouselIndex">
-          <slot :name="slot[prop.indexpath]"></slot>
+          <slot :name="slot[props.indexpath]"></slot>
         </div>
       </Transition>
     </div>
     <div
       class="text-txtWhite flex flex-row gap-10px bottom-0 w-full mb-20px justify-center absolute"
     >
-      <div v-for="(slot, index) of prop.slots" :key="slot.id">
+      <div v-for="(slot, index) of props.slots" :key="slot.id">
         <FAicon
           class="cursor-pointer"
           v-show="index == carouselIndex"

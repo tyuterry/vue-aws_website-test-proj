@@ -2,7 +2,7 @@
 import { ref, type Ref, watch } from "vue";
 
 const emit = defineEmits(["onClose"]);
-const prop = defineProps({
+const props = defineProps({
   open: Boolean,
   right: {
     default: true,
@@ -12,12 +12,15 @@ const prop = defineProps({
     default: false,
     type: Boolean,
   },
+  darkTheme: {
+    type: Boolean,
+    default: true,
+  },
 });
 let isShow: Ref<boolean> = ref(false);
 
-watch(prop, async () => {
-  console.log(prop.open);
-  if (prop.open) {
+watch(props, async () => {
+  if (props.open) {
     isShow.value = true;
   } else {
     isShow.value = false;
@@ -34,13 +37,22 @@ function closeDropdown() {
   <div class="inline z-20">
     <div
       v-show="isShow"
-      :class="{ 'right-0': prop.right, 'left-0': !prop.right }"
-      class="py-5px translate-y-5px absolute bg-bgDark"
+      :class="{
+        'right-0': props.right,
+        'left-0': !props.right,
+        'bg-bgDark': props.darkTheme,
+        'bg-bgWhite': !props.darkTheme,
+      }"
+      class="translate-y-5px absolute"
     >
       <FAicon
-        v-if="prop.closeIcon"
+        v-if="props.closeIcon"
         icon="fa-solid fa-xmark"
-        class="top-5px right-10px absolute cursor-pointer z-50 text-txtWhite text-2xl"
+        :class="{
+          'text-txtWhite': props.darkTheme,
+          'text-txtDark': !props.darkTheme,
+        }"
+        class="top-5px right-10px absolute cursor-pointer z-50 text-2xl"
         @click="closeDropdown()"
       />
       <slot>Seems Nothing Here :(</slot>

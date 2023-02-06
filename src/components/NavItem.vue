@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, watch, type Ref } from "vue";
 
-const prop = defineProps({
+const props = defineProps({
   hover: Boolean,
 });
 const emit = defineEmits<{
@@ -11,8 +11,8 @@ const emit = defineEmits<{
 let isNowHover: boolean = false;
 let isShow: Ref<boolean> = ref(false);
 
-watch(prop, async () => {
-  if (prop.hover) {
+watch(props, async () => {
+  if (props.hover) {
     isShow.value = true;
     emit("showChange", true);
   } else if (!isNowHover) {
@@ -34,7 +34,7 @@ function onMouseEnter() {
 function onMouseLeave() {
   isNowHover = false;
   setTimeout(() => {
-    if (!isNowHover && !prop.hover) {
+    if (!isNowHover && !props.hover) {
       isShow.value = false;
       emit("showChange", false);
     }

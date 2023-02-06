@@ -3,6 +3,7 @@ import { ref, type Ref } from "vue";
 
 const props = defineProps({
   content: Object,
+  colspan: Number,
 });
 
 let bulletins: Ref<Array<any>> = ref([

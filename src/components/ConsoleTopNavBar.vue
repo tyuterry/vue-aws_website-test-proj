@@ -44,11 +44,9 @@ fetch("/api/consoleLocation")
 
 function onOptionClick(optionName: string) {
   nowOption.value = optionName;
-  console.log(optionName);
 }
 function onServiceClick(serviceName: string) {
   nowService.value = serviceName;
-  console.log(serviceName);
 }
 function onClickServiceOutSide() {
   nowService.value = "";

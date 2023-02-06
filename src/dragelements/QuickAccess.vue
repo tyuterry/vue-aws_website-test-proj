@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const props = defineProps({
   content: Object,
+  colspan: Number,
 });
 </script>
 

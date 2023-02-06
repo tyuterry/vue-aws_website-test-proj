@@ -5,9 +5,9 @@ const props = defineProps({
 });
 
 let costStrings = [
-  { title: "本月成本", data: "0.01" },
-  { title: "預測的月底成本", data: "0.24" },
-  { title: "上月成本", data: "1.50" },
+  { title: "未解決的問題", data: "0" },
+  { title: "已排定的變更", data: "0" },
+  { title: "其他通知", data: "0" },
 ];
 </script>
 
@@ -16,15 +16,14 @@ let costStrings = [
     <div
       v-for="cost of costStrings"
       :key="cost.title"
-      class="flex flex-col w-full my-10px px-20px"
+      class="flex flex-row w-full my-10px px-20px justify-between"
     >
       <div
-        class="text-sm my-5px underline underline-offset-2 decoration-dotted"
+        class="text-sm my-5px underline underline-offset-2 decoration-dotted justify-self-end"
       >
         {{ cost.title }}
       </div>
-      <div class="text-3xl">US${{ cost.data }}</div>
-      <hr />
+      <div class="text-5xl">{{ cost.data }}</div>
     </div>
   </div>
 </template>

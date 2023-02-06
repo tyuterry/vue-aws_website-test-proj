@@ -2,7 +2,7 @@
 import type { SummaryWithTitleLink } from "@/models/SummaryWithTitleLink.model";
 import LinkTitleAndSummaryVue from "./LinkTitleAndSummary.vue";
 
-let prop = defineProps({
+let props = defineProps({
   text: String,
   childs: Array<SummaryWithTitleLink>,
 });
@@ -10,9 +10,9 @@ let prop = defineProps({
 
 <template>
   <div class="mt-40px">
-    <div class="text-base text-txtWhite">{{ prop.text }}</div>
+    <div class="text-base text-txtWhite">{{ props.text }}</div>
     <hr />
-    <div v-for="child of prop.childs" :key="child.title">
+    <div v-for="child of props.childs" :key="child.title">
       <LinkTitleAndSummaryVue
         :title="child.title"
         :text="child.text"

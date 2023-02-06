@@ -1,5 +1,5 @@
-import { createServer, Model, Server } from "miragejs";
-const server: Server = createServer({
+import { createServer, Model } from "miragejs";
+createServer({
   environment: "development",
 
   models: {
@@ -1699,7 +1699,8 @@ const server: Server = createServer({
               title: "Amazon Translate",
               text: "強大的神經機器翻譯",
               link: "",
-            },],
+            },
+          ],
         },
         {
           text: "Quantum Technologies",
@@ -1816,7 +1817,12 @@ const server: Server = createServer({
           link: "",
           childs: [],
         },
-      ]
+      ],
+      consoleData: [
+        {
+          data: `{"content":[{"id":"0","title":"快速存取","type":"quickaccess","colSpan":1,"sortNumber":1,"data":{"content":""}},{"id":"1","title":"圖表檢視","type":"consolebar","colSpan":1,"sortNumber":2,"data":{"content":""}},{"id":"2","title":"公告","type":"bulletins","colSpan":1,"sortNumber":3,"data":{"content":""}},{"id":"3","title":"圓餅圖檢視","type":"consoledoughunt","colSpan":1,"sortNumber":4,"data":{"content":""}},{"id":"4","title":"即時訊息","type":"quickinformation","colSpan":1,"sortNumber":5,"data":{"content":""}},{"id":"5","title":"通知面板","type":"alertpanel","colSpan":1,"sortNumber":6,"data":{"content":""}},{"id":"6","title":"控制台狀態","type":"consolestate","colSpan":1,"sortNumber":7,"data":{"content":""}},{"id":"7","title":"表格檢視","type":"consoletable","colSpan":1,"sortNumber":8,"data":{"content":""}}]}`,
+        },
+      ],
     });
   },
 
@@ -1825,6 +1831,16 @@ const server: Server = createServer({
 
     this.get("/:target", (schema: any, request: any) => {
       return schema.db[request.params.target];
+    });
+
+    this.post("/:target/:id", (schema, request) => {
+      const attrs = JSON.parse(request.requestBody);
+      const aaa = schema.db[request.params.target].update(
+        request.params.id,
+        attrs
+      );
+      // console.log(schema.db[request.params.target])
+      return aaa;
     });
   },
 });

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-let prop = defineProps({
+let props = defineProps({
   title: String,
   content: String,
   link: String,
@@ -9,15 +9,15 @@ let prop = defineProps({
 <template>
   <div>
     <a
-      :href="prop.link"
+      :href="props.link"
       class="text-txtPaimary decoration-0 hover:text-txtActive"
     >
       <div class="flex flex-row">
         <div class="flex-grow-0 mr-auto">
-          {{ prop.title }}<slot name="title"></slot>
+          {{ props.title }}<slot name="title"></slot>
         </div>
         <div class="flex-grow-0 ml-auto">
-          {{ prop.content }}<slot name="content"></slot>
+          {{ props.content }}<slot name="content"></slot>
         </div>
       </div>
     </a>

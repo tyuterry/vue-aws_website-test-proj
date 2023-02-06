@@ -1,5 +1,5 @@
 <script setup lang="ts">
-let prop = defineProps({
+let props = defineProps({
   title: String,
   text: String,
   link: String,
@@ -9,13 +9,13 @@ let prop = defineProps({
 <template>
   <div class="pb-2px group cursor-pointer">
     <a
-      :href="prop.link"
+      :href="props.link"
       class="text-sm text-txtWhite decoration-0 group-hover:text-txtActive"
     >
-      {{ prop.title }}
+      {{ props.title }}
     </a>
     <div class="text-sm text-txtGray decoration-0">
-      {{ prop.text }}
+      {{ props.text }}
     </div>
   </div>
 </template>
