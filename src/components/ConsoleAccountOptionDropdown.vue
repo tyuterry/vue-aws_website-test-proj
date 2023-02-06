@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, type Ref, watch } from "vue";
 
-const emit = defineEmits(["onClose"]);
+const emit = defineEmits(["update:close", "onClose"]);
 const props = defineProps({
   open: Boolean,
   right: {
@@ -17,18 +17,10 @@ const props = defineProps({
     default: true,
   },
 });
-let isShow: Ref<boolean> = ref(false);
-
-watch(props, async () => {
-  if (props.open) {
-    isShow.value = true;
-  } else {
-    isShow.value = false;
-  }
-});
 
 function closeDropdown() {
-  isShow.value = false;
+  emit("update:close", false);
+
   emit("onClose");
 }
 </script>
@@ -36,7 +28,7 @@ function closeDropdown() {
 <template>
   <div class="inline z-20">
     <div
-      v-show="isShow"
+      v-show="props.open"
       :class="{
         'right-0': props.right,
         'left-0': !props.right,
