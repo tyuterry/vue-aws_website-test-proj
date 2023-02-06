@@ -76,7 +76,7 @@ function deleteElement() {
         </div>
         <ConsoleAccountOptionDropdownVue
           class="h-5px mt-auto text-center cursor-pointer"
-          v-modal:open="dropdownOpen"
+          v-model:open="dropdownOpen"
           :darkTheme="false"
         >
           <div class="w-[50px] border">

@@ -78,7 +78,7 @@ function onServiceDropdownClose() {
         :open="nowService == 'service'"
         :right="false"
         :closeIcon="true"
-        @onClose="onServiceDropdownClose()"
+        @update:close="onServiceDropdownClose()"
       >
         <div class="w-[1000px] max-w-[80vw] bg-bgDark h-[90vh]">
           <NavConsoleViewVue> </NavConsoleViewVue>

@@ -61,7 +61,50 @@ function openModal() {
       :sortNumber="'sortNumber'"
     ></ConsoleDragPanelVue>
 
-    <ModalComponentVue :open="modalshow"></ModalComponentVue>
+    <ModalComponentVue v-model:open="modalshow" :title="'新增小工具'">
+      <div class="flex flex-row flex-wrap justify-center items-center m-20px">
+        <div
+          class="flex-auto w-[40%] text-center h-30px border cursor-pointer m-5px"
+        >
+          +快速存取
+        </div>
+        <div
+          class="flex-auto w-[40%] text-center h-30px border cursor-pointer m-5px"
+        >
+          +圖表顯示
+        </div>
+        <div
+          class="flex-auto w-[40%] text-center h-30px border cursor-pointer m-5px"
+        >
+          +公告
+        </div>
+        <div
+          class="flex-auto w-[40%] text-center h-30px border cursor-pointer m-5px"
+        >
+          +圓餅圖檢視
+        </div>
+        <div
+          class="flex-auto w-[40%] text-center h-30px border cursor-pointer m-5px"
+        >
+          +即時訊息
+        </div>
+        <div
+          class="flex-auto w-[40%] text-center h-30px border cursor-pointer m-5px"
+        >
+          +通知面板
+        </div>
+        <div
+          class="flex-auto w-[40%] text-center h-30px border cursor-pointer m-5px"
+        >
+          +控制台狀態
+        </div>
+        <div
+          class="flex-auto w-[40%] text-center h-30px border cursor-pointer m-5px"
+        >
+          +表格檢視
+        </div>
+      </div>
+    </ModalComponentVue>
   </div>
 </template>
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, type Ref, watch } from "vue";
 
-const emit = defineEmits(["update:close", "onClose"]);
+const emit = defineEmits(["update:close"]);
 const props = defineProps({
   open: Boolean,
   right: {
@@ -20,8 +20,6 @@ const props = defineProps({
 
 function closeDropdown() {
   emit("update:close", false);
-
-  emit("onClose");
 }
 </script>
 
