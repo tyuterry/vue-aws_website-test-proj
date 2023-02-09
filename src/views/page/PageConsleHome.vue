@@ -2,14 +2,20 @@
 import { ref, type Ref } from "vue";
 import ConsoleDragPanelVue from "@/components/ConsoleDragPanel.vue";
 import ModalComponentVue from "@/components/ModalComponent.vue";
-import type { ConsoleData } from "@/models/ConsoleData.model";
+import { ConsoleData } from "@/models/ConsoleData.model";
 
 import axios from "axios";
 
 let consoleData: Ref<Array<ConsoleData>> = ref([]);
 let modalshow: Ref<boolean> = ref(false);
+let consoleWidget: Ref<Array<any>> = ref([]);
 
 query();
+
+axios.get("/api/consoleWidget").then((response: { data: any }) => {
+  console.log(response);
+  consoleWidget.value = response.data;
+});
 
 function query() {
   axios.get("/api/consoleData").then((response: { data: any }) => {
@@ -29,6 +35,26 @@ function update() {
 
 function openModal() {
   modalshow.value = true;
+}
+function closeModal() {
+  modalshow.value = false;
+}
+
+function addWidget(widgetType: string, widgetTitle: string) {
+  let sortMax = Math.max.apply(
+    null,
+    consoleData.value.map(function (o) {
+      return o.sortNumber;
+    })
+  );
+  let newWidget = new ConsoleData();
+  newWidget.id = Math.random().toString(36).substring(7);
+  newWidget.sortNumber = sortMax + 1;
+  newWidget.type = widgetType;
+  newWidget.colSpan = 1;
+  newWidget.title = widgetTitle;
+  consoleData.value.push(newWidget);
+  closeModal();
 }
 </script>
 <template>
@@ -64,44 +90,12 @@ function openModal() {
     <ModalComponentVue v-model:open="modalshow" :title="'新增小工具'">
       <div class="flex flex-row flex-wrap justify-center items-center m-20px">
         <div
+          v-for="widget of consoleWidget"
+          :key="widget.title"
           class="flex-auto w-[40%] text-center h-30px border cursor-pointer m-5px"
+          @click="addWidget(widget.type, widget.title)"
         >
-          +快速存取
-        </div>
-        <div
-          class="flex-auto w-[40%] text-center h-30px border cursor-pointer m-5px"
-        >
-          +圖表顯示
-        </div>
-        <div
-          class="flex-auto w-[40%] text-center h-30px border cursor-pointer m-5px"
-        >
-          +公告
-        </div>
-        <div
-          class="flex-auto w-[40%] text-center h-30px border cursor-pointer m-5px"
-        >
-          +圓餅圖檢視
-        </div>
-        <div
-          class="flex-auto w-[40%] text-center h-30px border cursor-pointer m-5px"
-        >
-          +即時訊息
-        </div>
-        <div
-          class="flex-auto w-[40%] text-center h-30px border cursor-pointer m-5px"
-        >
-          +通知面板
-        </div>
-        <div
-          class="flex-auto w-[40%] text-center h-30px border cursor-pointer m-5px"
-        >
-          +控制台狀態
-        </div>
-        <div
-          class="flex-auto w-[40%] text-center h-30px border cursor-pointer m-5px"
-        >
-          +表格檢視
+          {{ widget.addtext }}
         </div>
       </div>
     </ModalComponentVue>

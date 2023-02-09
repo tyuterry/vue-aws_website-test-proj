@@ -3,6 +3,7 @@ export interface ConsoleData {
   title: string;
   colSpan?: number;
   type: string;
+  sortNumber: number;
   data: {
     content: any;
     option?: any;
@@ -16,5 +17,6 @@ export class ConsoleData {
       content: "",
     };
     this.type = "";
+    this.sortNumber = 0;
   }
 }
