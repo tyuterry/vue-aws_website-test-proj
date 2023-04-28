@@ -6,11 +6,16 @@ import { ref, type Ref } from "vue";
 
 let data: Ref<NavReInventViewData | undefined> = ref(undefined);
 
-fetch("/api/NavReInventViewData")
+fetch("/data.json")
   .then((res) => res.json())
   .then((json) => {
-    data.value = json[0];
+    data.value = json["NavReInventViewData"][0];
   });
+// fetch("/api/NavReInventViewData")
+//   .then((res) => res.json())
+//   .then((json) => {
+//     data.value = json[0];
+//   });
 </script>
 
 <template>

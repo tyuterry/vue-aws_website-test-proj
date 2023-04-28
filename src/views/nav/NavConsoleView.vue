@@ -32,11 +32,16 @@ let mainCategory: NavItem[] = [
 ];
 let consoleServiceData: Ref<NavItem[]> = ref([]);
 
-fetch("/api/consoleServceData")
+fetch("/data.json")
   .then((res) => res.json())
   .then((json) => {
-    consoleServiceData.value = json;
+    consoleServiceData.value = json["consoleServceData"];
   });
+// fetch("/api/consoleServceData")
+//   .then((res) => res.json())
+//   .then((json) => {
+//     consoleServiceData.value = json;
+//   });
 
 function onclick(index: number, mainCategory: boolean) {
   mainCategoryView.value = mainCategory;

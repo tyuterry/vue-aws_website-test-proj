@@ -8,10 +8,16 @@ import NavProductViewVue from "@/views/nav/NavProductView.vue";
 
 let navTitle: Ref<{ name: string }[]> = ref([]);
 
-fetch("/api/navTitle")
+// fetch("/api/navTitle")
+//   .then((res) => res.json())
+//   .then((json) => {
+//     navTitle.value = json;
+//   });
+
+fetch("/data.json")
   .then((res) => res.json())
   .then((json) => {
-    navTitle.value = json;
+    navTitle.value = json["navTitle"];
   });
 
 let isNavTitleNowHover: boolean = false;

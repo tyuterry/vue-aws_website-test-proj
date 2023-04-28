@@ -8,11 +8,17 @@ import type { NavItem } from "@/models/NavItem.model";
 let categoryIndex = ref(0);
 let navItemData: Ref<NavItem[]> = ref([]);
 
-fetch("/api/navItemData")
+fetch("/data.json")
   .then((res) => res.json())
   .then((json) => {
-    navItemData.value = json;
+    navItemData.value = json["navItemData"];
   });
+
+// fetch("/api/navItemData")
+//   .then((res) => res.json())
+//   .then((json) => {
+//     navItemData.value = json;
+//   });
 
 function onMouseEnter(index: number) {
   categoryIndex.value = index;

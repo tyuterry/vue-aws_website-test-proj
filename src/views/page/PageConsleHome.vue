@@ -12,25 +12,38 @@ let consoleWidget: Ref<Array<any>> = ref([]);
 
 query();
 
-axios.get("/api/consoleWidget").then((response: { data: any }) => {
+// axios.get("/api/consoleWidget").then((response: { data: any }) => {
+//   console.log(response);
+//   consoleWidget.value = response.data;
+// });
+
+axios.get("/data.json").then((response: { data: any }) => {
   console.log(response);
-  consoleWidget.value = response.data;
+  consoleWidget.value = response.data["consoleWidget"];
 });
 
 function query() {
-  axios.get("/api/consoleData").then((response: { data: any }) => {
-    consoleData.value = JSON.parse(response.data[0].data).content;
+  // axios.get("/api/consoleData").then((response: { data: any }) => {
+  //   consoleData.value = JSON.parse(response.data[0].data).content;
+  // });
+
+  axios.get("/data.json").then((response: { data: any }) => {
+    // console.log(response);
+    consoleData.value = JSON.parse(
+      response.data["consoleData"][0].data
+    ).content;
   });
 }
 
+fetch("/data.json");
 function update() {
-  axios
-    .post("/api/consoleData/1", {
-      data: JSON.stringify({ content: consoleData.value }),
-    })
-    .then(() => {
-      query();
-    });
+  // axios
+  //   .post("/api/consoleData/1", {
+  //     data: JSON.stringify({ content: consoleData.value }),
+  //   })
+  //   .then(() => {
+  //     query();
+  //   });
 }
 
 function openModal() {

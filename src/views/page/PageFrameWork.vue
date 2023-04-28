@@ -11,17 +11,28 @@ let footerData: Ref<FooterData[]> = ref([]);
 
 let langs: Ref<TitleLink[]> = ref([]);
 
-fetch("/api/langs")
+fetch("/data.json")
   .then((res) => res.json())
   .then((json) => {
-    langs.value = json;
+    langs.value = json["langs"];
   });
 
-fetch("/api/footerdata")
+fetch("/data.json")
   .then((res) => res.json())
   .then((json) => {
-    footerData.value = json;
+    footerData.value = json["footerdata"];
   });
+// fetch("/api/langs")
+//   .then((res) => res.json())
+//   .then((json) => {
+//     langs.value = json;
+//   });
+
+// fetch("/api/footerdata")
+//   .then((res) => res.json())
+//   .then((json) => {
+//     footerData.value = json;
+//   });
 </script>
 
 <template>

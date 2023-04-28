@@ -7,10 +7,24 @@ import AccountOptionDropdown from "./AccountOptionDropdown.vue";
 let accountOptData: Ref<AccountOptData[]> = ref([]);
 let accountOpts: AccountOption[] = reactive([]);
 
-fetch("/api/accountOptData")
+// fetch("/api/accountOptData")
+//   .then((res) => res.json())
+//   .then((json) => {
+//     accountOptData.value = json.map((e: any) => {
+//       return new AccountOptData(e.name, e.link, e.childs);
+//     });
+//     accountOpts.push(
+//       ...accountOptData.value.map((e, index) => {
+//         return new AccountOption(e, index + "");
+//       })
+//     );
+//   });
+
+fetch("/data.json")
   .then((res) => res.json())
   .then((json) => {
-    accountOptData.value = json.map((e: any) => {
+    console.log(json);
+    accountOptData.value = json["accountOptData"].map((e: any) => {
       return new AccountOptData(e.name, e.link, e.childs);
     });
     accountOpts.push(

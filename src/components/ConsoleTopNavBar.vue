@@ -29,18 +29,28 @@ let consoleAccount: { label: string; divide: false }[] = [
 
 let nowOption: Ref<string> = ref("");
 let nowService: Ref<string> = ref("");
-
-fetch("/api/consoleNotice")
+fetch("/data.json")
   .then((res) => res.json())
   .then((json) => {
-    consoleNotices.value = json;
+    consoleNotices.value = json["consoleNotice"];
   });
-
-fetch("/api/consoleLocation")
+fetch("/data.json")
   .then((res) => res.json())
   .then((json) => {
-    consoleLocation.value = json;
+    consoleLocation.value = json["consoleLocation"];
   });
+
+// fetch("/api/consoleNotice")
+//   .then((res) => res.json())
+//   .then((json) => {
+//     consoleNotices.value = json;
+//   });
+
+// fetch("/api/consoleLocation")
+//   .then((res) => res.json())
+//   .then((json) => {
+//     consoleLocation.value = json;
+//   });
 
 function onOptionClick(optionName: string) {
   nowOption.value = optionName;

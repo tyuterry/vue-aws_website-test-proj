@@ -16,29 +16,52 @@ let spotlightLinks: Ref<SummaryWithTitleLink[]> = ref([]);
 let categoryResourse: Ref<ResourcesWithTitleLink[]> = ref([]);
 let speakerResourse: Ref<SummaryWithTitleImgLink[]> = ref([]);
 
-fetch("/api/cdata")
+fetch("/data.json")
   .then((res) => res.json())
   .then((json) => {
-    cdata.value = json;
+    cdata.value = json["cdata"];
   });
 
-fetch("/api/categoryResourse")
+fetch("/data.json")
   .then((res) => res.json())
   .then((json) => {
-    categoryResourse.value = json;
+    categoryResourse.value = json["categoryResourse"];
   });
 
-fetch("/api/speakerResourse")
+fetch("/data.json")
   .then((res) => res.json())
   .then((json) => {
-    speakerResourse.value = json;
+    speakerResourse.value = json["speakerResourse"];
   });
 
-fetch("/api/spotlightLinks")
+fetch("/data.json")
   .then((res) => res.json())
   .then((json) => {
-    spotlightLinks.value = json;
+    spotlightLinks.value = json["spotlightLinks"];
   });
+// fetch("/api/cdata")
+//   .then((res) => res.json())
+//   .then((json) => {
+//     cdata.value = json;
+//   });
+
+// fetch("/api/categoryResourse")
+//   .then((res) => res.json())
+//   .then((json) => {
+//     categoryResourse.value = json;
+//   });
+
+// fetch("/api/speakerResourse")
+//   .then((res) => res.json())
+//   .then((json) => {
+//     speakerResourse.value = json;
+//   });
+
+// fetch("/api/spotlightLinks")
+//   .then((res) => res.json())
+//   .then((json) => {
+//     spotlightLinks.value = json;
+//   });
 </script>
 
 <template>
