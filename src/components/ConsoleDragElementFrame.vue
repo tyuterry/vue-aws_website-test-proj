@@ -92,7 +92,7 @@ function deleteElement() {
       </div>
       <component
         v-if="props.type != undefined"
-        :is="dragComponents[props.type as string]"
+        :is="dragComponents[props.type]"
         :content="props.data"
         :colspan="props.colSpan"
       ></component>
